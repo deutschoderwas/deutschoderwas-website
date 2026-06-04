@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/amanda", "destination": "/amanda_landing.html" }
+  ]
+}
