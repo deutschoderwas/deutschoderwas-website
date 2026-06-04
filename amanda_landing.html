@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amanda — Sprich mit deiner KI-Deutschtutorin | deutschoderwas</title>
+<meta name="description" content="Amanda ist die KI-Deutschtutorin von deutschoderwas. Sie spricht mit Julias Stimme, korrigiert geduldig und übt Konversation auf jedem Niveau. Probier sie jetzt kostenlos.">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#DD0000;        /* Deutschland-Rot */
+  --primary-dark:#B30000;
+  --secondary:#1A1A1A;      /* Schwarz */
+  --accent:#FFCE00;         /* Deutschland-Gold */
+  --turquoise:#2DD4BF;      /* Türkis aus dem Logo */
+  --turquoise-soft:#A7F3D0;
+  --yellow:#FFCE00;
+  --cream:#FFFCF5;
+  --bg:#FFF8E0;
+  --text:#1A1A1A;
+  --text-soft:#6B7280;
+  --border:#F0E5D8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.55;overflow-x:hidden}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;line-height:1.1}
+.serif-accent{font-style:italic;font-weight:500}
+
+/* NAV — identisch zur index.html */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,252,245,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;text-decoration:none;color:var(--secondary)}
+.logo-icon{width:42px;height:42px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo small{display:block;font-weight:500;font-size:11px;color:var(--text-soft);margin-top:-2px}
+.nav-menu{display:flex;align-items:center;gap:26px}
+.nav-menu a.link{text-decoration:none;color:var(--text-soft);font-weight:600;font-size:14px;transition:color .2s}
+.nav-menu a.link:hover{color:var(--secondary)}
+.nav-menu a.link.back{color:var(--primary);font-weight:700}
+.nav-menu a.link.back:hover{color:var(--primary-dark)}
+.nav-cta{background:var(--secondary);color:#fff;padding:10px 18px;border-radius:30px;text-decoration:none;font-weight:700;font-size:14px;transition:all .2s}
+.nav-cta:hover{background:var(--primary);transform:translateY(-1px)}
+.burger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--secondary)}
+
+/* CONTAINER */
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{padding:50px 24px 70px;background:linear-gradient(135deg,#FFF9F2 0%,#FFF4D6 60%,#FFCE00 130%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-120px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(221,0,0,.14),transparent 70%);border-radius:50%;z-index:0}
+.hero::after{content:'';position:absolute;bottom:-200px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(45,212,191,.18),transparent 70%);border-radius:50%;z-index:0}
+.hero-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(45,212,191,.18);color:var(--secondary);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:.2px}
+.hero-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--turquoise);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800;color:var(--secondary);margin-bottom:18px}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.hero .subtitle-en{font-family:'Space Grotesk',sans-serif;font-size:18px;color:var(--text-soft);font-style:italic;margin-bottom:24px;font-weight:500}
+.hero p.lead{font-size:18px;color:var(--text);margin-bottom:32px;max-width:520px;line-height:1.6}
+.hero p.lead em{color:var(--text-soft);font-style:italic;font-size:15px;display:block;margin-top:6px}
+.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:all .25s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 25px rgba(221,0,0,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(221,0,0,.45);background:var(--primary-dark)}
+.btn-ghost{background:#fff;color:var(--secondary);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--cream);transform:translateY(-2px)}
+.btn-dark{background:var(--secondary);color:#fff}
+.btn-dark:hover{background:var(--primary);transform:translateY(-2px)}
+.hero-hint{font-size:13px;color:var(--text-soft);display:flex;align-items:center;gap:8px}
+.hero-hint::before{content:'🎤';font-size:16px}
+
+/* AMANDA PHOTO */
+.amanda-photo-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.amanda-photo-frame{position:relative;width:100%;max-width:440px;aspect-ratio:462/866;border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:rotate(2deg);transition:transform .4s;border:5px solid #fff}
+.amanda-photo-frame:hover{transform:rotate(0deg) scale(1.02)}
+.amanda-photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-badge{position:absolute;background:#fff;border-radius:18px;padding:12px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.12);font-weight:700;font-size:14px;z-index:2}
+.photo-badge.top{top:30px;left:-30px;transform:rotate(-5deg)}
+.photo-badge.bottom{bottom:60px;right:-20px;transform:rotate(4deg)}
+.photo-badge .dot{width:10px;height:10px;border-radius:50%;background:var(--turquoise);animation:pulse 1.5s infinite}
+.photo-badge .em{font-size:18px}
+
+/* SECTION COMMON */
+section{padding:90px 24px}
+.section-head{text-align:center;max-width:760px;margin:0 auto 60px}
+.section-tag{display:inline-block;background:var(--bg);color:var(--primary);padding:6px 14px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.section-head h2{font-size:clamp(32px,4.5vw,52px);font-weight:800;color:var(--secondary);margin-bottom:14px}
+.section-head h2 .highlight{color:var(--primary)}
+.section-head p{font-size:18px;color:var(--text-soft);max-width:600px;margin:0 auto;line-height:1.6}
+.section-head p em{font-style:italic;font-size:15px;display:block;margin-top:8px}
+
+/* CAPABILITIES */
+.capabilities{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:1180px;margin:0 auto}
+.cap-card{background:linear-gradient(135deg,#FFF9F2,#FFF4D6);border:1.5px solid var(--border);border-radius:24px;padding:32px;transition:all .3s;position:relative;overflow:hidden}
+.cap-card:hover{transform:translateY(-6px);border-color:var(--primary);box-shadow:0 20px 50px rgba(221,0,0,.15)}
+.cap-card .num{font-family:'Space Grotesk',sans-serif;font-size:60px;font-weight:800;color:rgba(221,0,0,.15);position:absolute;top:14px;right:24px;line-height:1}
+.cap-card h3{font-size:22px;font-weight:800;color:var(--secondary);margin-bottom:8px;position:relative;z-index:1}
+.cap-card .en-subtitle{font-family:'Space Grotesk',sans-serif;font-style:italic;color:var(--text-soft);font-size:14px;margin-bottom:14px;font-weight:500}
+.cap-card p{font-size:15px;color:var(--text);line-height:1.6}
+
+/* HOW IT WORKS */
+.how{background:linear-gradient(180deg,var(--cream) 0%,#fff 100%)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1000px;margin:0 auto;position:relative}
+.steps::before{content:'';position:absolute;top:48px;left:18%;right:18%;height:3px;background:repeating-linear-gradient(90deg,var(--accent) 0,var(--accent) 8px,transparent 8px,transparent 16px);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:96px;height:96px;border-radius:50%;background:#fff;border:3px solid var(--accent);color:var(--secondary);font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 10px 30px rgba(255,206,0,.4)}
+.step h3{font-size:20px;font-weight:800;color:var(--secondary);margin-bottom:8px}
+.step p{font-size:15px;color:var(--text);line-height:1.6}
+.step p em{display:block;color:var(--text-soft);font-style:italic;font-size:13px;margin-top:4px}
+
+/* PLÄNE — identisch zur index.html */
+.offers{background:#fff;border-top:1px solid var(--border)}
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1080px;margin:0 auto;align-items:stretch}
+.offer-card{background:#fff;border:2px solid var(--border);border-radius:28px;padding:36px 32px;position:relative;transition:all .3s;display:flex;flex-direction:column}
+.offer-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.1)}
+.offer-card.featured{border-color:var(--primary);background:linear-gradient(135deg,#FFF9F2,#FFF4D6);box-shadow:0 30px 60px rgba(221,0,0,.18)}
+.offer-card.featured::before{content:'BELIEBT';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:6px 16px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:1.5px}
+.offer-emoji{font-size:34px;margin-bottom:10px}
+.offer-card h3{font-size:24px;font-weight:800;color:var(--secondary);margin-bottom:6px}
+.offer-tier{font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--primary);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.offer-price{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:800;color:var(--secondary);line-height:1;margin:0 0 16px}
+.offer-price span{font-size:15px;color:var(--text-soft);font-weight:600;margin-left:6px}
+.offer-features{list-style:none;margin-bottom:28px}
+.offer-features li{padding:10px 0;display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);border-bottom:1px solid var(--border)}
+.offer-features li::before{content:'✓';color:var(--primary);font-weight:900;font-size:18px;line-height:1.4}
+.offer-features li:last-child{border-bottom:none}
+.offer-card .btn{width:100%;justify-content:center;margin-top:auto}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--secondary);color:#fff}
+.testimonials .section-head h2{color:#fff}
+.testimonials .section-head h2 .highlight{color:var(--accent)}
+.testimonials .section-head p{color:rgba(255,255,255,.7)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1180px;margin:0 auto}
+.test-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:30px;backdrop-filter:blur(10px)}
+.test-card .stars{color:var(--accent);font-size:15px;letter-spacing:2px;margin-bottom:12px}
+.test-card .quote{font-size:17px;font-weight:500;line-height:1.55;margin-bottom:22px;color:#fff}
+.test-card .author{display:flex;align-items:center;gap:12px}
+.test-card .author-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:'Space Grotesk',sans-serif}
+.test-card .author-name{font-weight:700;font-size:15px}
+.test-card .author-context{font-size:13px;color:rgba(255,255,255,.7);margin-top:2px}
+
+/* ABOUT JULIA */
+.about{background:linear-gradient(135deg,var(--turquoise-soft) 0%,var(--turquoise) 100%);padding:100px 24px}
+.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:center}
+.about-photo{aspect-ratio:1;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25);background:#fff;border:4px solid #fff}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about h2{font-size:clamp(32px,4vw,44px);font-weight:800;color:var(--secondary);margin-bottom:18px}
+.about p{font-size:17px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.about-socials{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.social-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(26,26,26,.08);color:var(--secondary);padding:8px 16px;border-radius:30px;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s}
+.social-pill:hover{background:var(--secondary);color:#fff}
+
+/* FAQ */
+.faq{background:var(--cream)}
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:24px 28px;cursor:pointer;transition:all .25s}
+.faq-item:hover{border-color:var(--primary)}
+.faq-item summary{font-size:17px;font-weight:700;color:var(--secondary);display:flex;justify-content:space-between;align-items:center;list-style:none;gap:14px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:30px;color:var(--primary);transition:transform .25s;font-weight:300;line-height:1;flex-shrink:0}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{margin-top:18px;color:var(--text);font-size:15px;line-height:1.65}
+.faq-item p em{color:var(--text-soft);font-style:italic;display:block;margin-top:8px;font-size:14px}
+
+/* FINAL CTA + NEWSLETTER (20 Sätze Lead Magnet) */
+.final-cta{background:var(--secondary);color:#fff;padding:100px 24px;text-align:center}
+.final-cta h2{font-size:clamp(34px,5vw,56px);font-weight:800;margin-bottom:16px;line-height:1.1}
+.final-cta h2 .highlight{color:var(--accent)}
+.final-cta p{font-size:18px;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 28px;line-height:1.6}
+.final-cta p em{display:block;font-size:15px;color:rgba(255,255,255,.55);margin-top:6px}
+.nl-form{max-width:520px;margin:0 auto 18px;display:flex;gap:12px;flex-wrap:wrap}
+.nl-form input[type=email]{flex:1;min-width:220px;background:#fff;border:2px solid transparent;border-radius:50px;padding:16px 22px;font-family:inherit;font-size:15px;color:var(--secondary);outline:none;transition:border-color .2s}
+.nl-form input[type=email]:focus{border-color:var(--accent)}
+.nl-form button{flex-shrink:0}
+.nl-note{font-size:13px;color:rgba(255,255,255,.55);max-width:520px;margin:0 auto 26px}
+.nl-success{max-width:520px;margin:0 auto 24px;background:rgba(45,212,191,.15);border:1.5px solid var(--turquoise);color:#fff;border-radius:18px;padding:20px 24px;font-weight:600;display:none}
+.nl-success.show{display:block}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER — identisch zur index.html */
+footer{background:#0A0A0A;color:rgba(255,255,255,.7);padding:60px 24px 30px;font-size:14px}
+.footer-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:36px}
+footer h4{color:#fff;font-weight:800;margin-bottom:14px;font-size:14px;letter-spacing:.5px}
+footer ul{list-style:none}
+footer li{margin-bottom:8px}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--accent)}
+.footer-brand .logo{color:#fff;margin-bottom:14px}
+.footer-brand p{font-size:14px;line-height:1.55;color:rgba(255,255,255,.6)}
+.impressum{max-width:1180px;margin:0 auto 22px;font-size:12px;line-height:1.7;color:rgba(255,255,255,.45)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.5);max-width:1180px;margin:0 auto}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hero{padding:30px 20px 50px}
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  .amanda-photo-frame{max-width:340px;transform:rotate(0)}
+  .photo-badge.top{left:auto;right:-15px;top:20px}
+  .photo-badge.bottom{right:auto;left:-15px;bottom:50px}
+  .hero-cta-row{justify-content:center}
+  .steps{grid-template-columns:1fr;gap:30px}
+  .steps::before{display:none}
+  .offer-grid{grid-template-columns:1fr;max-width:440px}
+  .about-grid{grid-template-columns:1fr;text-align:center}
+  .about-photo{max-width:340px;margin:0 auto}
+  .about-socials{justify-content:center}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  section{padding:70px 20px}
+  .nav-menu{display:none}
+  .nav-menu.show{display:flex;position:absolute;top:71px;left:0;right:0;flex-direction:column;background:var(--cream);padding:20px 24px;gap:18px;box-shadow:0 14px 30px rgba(0,0,0,.1);align-items:flex-start}
+  .burger{display:block}
+}
+@media(max-width:560px){
+  .footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV — gleicher Header wie index.html, mit Zurück-Link -->
+<nav class="nav">
+  <a href="index.html#top" class="logo">
+    <img src="logo.PNG" alt="deutschoderwas" class="logo-icon">
+    <div>deutschoderwas<small>Deutsch lernen mit Spaß</small></div>
+  </a>
+  <div class="nav-menu" id="navmenu">
+    <a href="index.html" class="link back">← Startseite</a>
+    <a href="#sprechen" class="link">Sprechen</a>
+    <a href="#wie" class="link">So geht's</a>
+    <a href="#plaene" class="link">Pläne</a>
+    <a href="#stimmen" class="link">Stimmen</a>
+    <a href="#faq" class="link">FAQ</a>
+    <a href="https://stan.store/deutschoderwas" class="nav-cta" target="_blank" rel="noopener">Kurse ansehen</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menü">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Live · Amanda ist gerade online</div>
+      <h1>Sprich mit <span class="highlight">Amanda</span>.</h1>
+      <p class="subtitle-en serif-accent">Talk with Amanda — your AI German tutor.</p>
+      <p class="lead">
+        Amanda ist meine KI-Deutschtutorin. Sie spricht mit meiner Stimme, korrigiert sanft und macht aus jedem Üben ein echtes Gespräch — geduldig, mit Humor, 24/7 für dich da.
+        <em>Patient, voice-cloned from me, and always there. The most natural way to actually start speaking German.</em>
+      </p>
+      <div class="hero-cta-row">
+        <a href="#sprechen" class="btn btn-primary">🎤 Sprich jetzt mit Amanda</a>
+        <a href="index.html#angebote" class="btn btn-ghost">Alle Angebote</a>
+      </div>
+      <div class="hero-hint">Klick auf das Widget unten rechts. Chrome oder Safari empfohlen.</div>
+    </div>
+    <div class="amanda-photo-wrap">
+      <div class="photo-badge top"><span class="em">👋</span> „Hey, schön dass du da bist!"</div>
+      <div class="amanda-photo-frame">
+        <img src="amanda.png" alt="Amanda — deine KI-Deutschtutorin">
+      </div>
+      <div class="photo-badge bottom"><span class="dot"></span> A1 bis C2</div>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT AMANDA CAN DO -->
+<section class="capabilities" id="sprechen">
+  <div class="section-head">
+    <div class="section-tag">Was Amanda kann</div>
+    <h2>Vier Wege, mit <span class="highlight">Amanda</span> zu lernen</h2>
+    <p>Sie passt sich automatisch deinem Niveau an — vom Grundwortschatz bis akademisches Deutsch. <em>She adapts to your level automatically — from beginner vocabulary to academic German.</em></p>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card">
+      <div class="num">01</div>
+      <h3>Freie Konversation</h3>
+      <div class="en-subtitle">Free conversation at any level</div>
+      <p>Quatsch über Alltag, Hobbys, Reisen, Gefühle. Amanda erkennt dein Niveau und passt sich an — A1 mit einfachen Sätzen, C2 mit Idiomen und Anspielungen.</p>
+    </div>
+    <div class="cap-card">
+      <div class="num">02</div>
+      <h3>Fehler sanft korrigieren</h3>
+      <div class="en-subtitle">Gentle error correction</div>
+      <p>Sie korrigiert nicht wie ein Roboter, sondern eingebettet ins Gespräch — wie eine Freundin, nicht wie eine strenge Lehrerin. Nur ein Fehler pro Antwort, ohne Druck.</p>
+    </div>
+    <div class="cap-card">
+      <div class="num">03</div>
+      <h3>Grammatik erklären</h3>
+      <div class="en-subtitle">Grammar &amp; vocabulary, explained</div>
+      <p>Frag sie alles — von der/die/das bis Konjunktiv II. Sie erklärt mit Beispielen aus dem Alltag, ohne Lehrbuch-Sprache, mit Eselsbrücken, die kleben.</p>
+    </div>
+    <div class="cap-card">
+      <div class="num">04</div>
+      <h3>Prüfungs-Simulation</h3>
+      <div class="en-subtitle">Goethe · TestDaF · B1 (DTZ)</div>
+      <p>Amanda spielt die Prüferin im Original-Format. Du übst mündlich, sie gibt freundliches Feedback — was war gut, was kann besser werden.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="wie">
+  <div class="section-head">
+    <div class="section-tag">So fängst du an</div>
+    <h2>Drei Schritte. Kein Setup. <span class="highlight">Nichts installieren.</span></h2>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Widget anklicken</h3>
+      <p>Unten rechts auf der Seite siehst du Amanda. Klick auf „Mit Amanda sprechen". <em>Click on the Amanda widget in the bottom-right corner.</em></p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Mikrofon erlauben</h3>
+      <p>Dein Browser fragt einmal nach. Klick „Erlauben" — danach nie wieder. <em>Your browser will ask for microphone access once.</em></p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>„Hallo Amanda" sagen</h3>
+      <p>Und schon redet ihr. Sie übernimmt — auf Deutsch, in deinem Tempo. <em>Say „Hallo Amanda" and start. She'll take it from there.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- PLÄNE — identisch zur index.html -->
+<section class="offers" id="plaene">
+  <div class="section-head">
+    <span class="section-tag">Pläne &amp; Preise</span>
+    <h2>Wähle deinen <span class="highlight">Amanda-Plan</span></h2>
+    <p>Starte kostenlos – und sprich so viel Deutsch, wie du willst. Monatlich, jederzeit kündbar.</p>
+  </div>
+  <div class="offer-grid">
+
+    <div class="offer-card">
+      <div class="offer-emoji">🆓</div>
+      <h3>Kostenlos</h3>
+      <div class="offer-tier">Zum Reinschnuppern</div>
+      <div class="offer-price">0 €<span>für immer</span></div>
+      <ul class="offer-features">
+        <li>5 Minuten Amanda täglich</li>
+        <li>Frei sprechen üben</li>
+        <li>Kein Risiko, kein Abo</li>
+      </ul>
+      <a href="#sprechen" class="btn btn-ghost">Kostenlos testen</a>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-emoji">💬</div>
+      <h3>Sprechen</h3>
+      <div class="offer-tier">Unbegrenzt mit Amanda</div>
+      <div class="offer-price">9,99 €<span>/ Monat</span></div>
+      <ul class="offer-features">
+        <li>24/7 mit Amanda sprechen</li>
+        <li>Unbegrenzte Gespräche</li>
+        <li>Alle Niveaus A1–C2</li>
+        <li>Monatlich kündbar</li>
+      </ul>
+      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda&utm_campaign=sprechen" class="btn btn-dark" target="_blank" rel="noopener">Jetzt buchen →</a>
+    </div>
+
+    <div class="offer-card featured">
+      <div class="offer-emoji">⭐</div>
+      <h3>Premium</h3>
+      <div class="offer-tier">Alles drin</div>
+      <div class="offer-price">19,99 €<span>/ Monat</span></div>
+      <ul class="offer-features">
+        <li>Alles aus „Sprechen" – 24/7 mit Amanda</li>
+        <li>Komplettes Videomaterial zu Themen aus Julias LIVE-Klassen</li>
+        <li>Geschlossene Community mit täglichen Übungen</li>
+        <li>Audionachrichten &amp; Videos von Julia persönlich</li>
+      </ul>
+      <div style="margin-top:auto">
+        <button class="btn" style="background:#F0E5D8;color:#6B7280;cursor:not-allowed;width:100%;justify-content:center" disabled>⏳ Bald verfügbar</button>
+        <a href="index.html#newsletter" style="display:block;text-align:center;margin-top:10px;color:#DD0000;text-decoration:none;font-weight:700;font-size:14px">👉 Auf die Warteliste setzen</a>
+      </div>
+    </div>
+
+  </div>
+  <p style="text-align:center;margin-top:30px;color:var(--text-soft);font-size:14px">Monatlich kündbar · 7-Tage-Geld-zurück bei Unzufriedenheit · Sichere Zahlung über Stan.</p>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="stimmen">
+  <div class="section-head">
+    <div class="section-tag" style="background:rgba(255,206,0,.2);color:var(--accent)">Erste Stimmen zu Amanda</div>
+    <h2>Was Lerner über <span class="highlight">Amanda</span> sagen</h2>
+    <p>Aus den ersten Wochen mit Amanda — echte Stimmen aus 3 Kontinenten.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">„Ich hab in fünf Minuten mehr Deutsch gesprochen als in sechs Monaten Duolingo. Amanda lacht über meine Fehler — auf die gute Art. Ich vergesse, dass sie eine KI ist."</p>
+      <div class="author">
+        <div class="author-avatar">S</div>
+        <div>
+          <div class="author-name">Sara, 28</div>
+          <div class="author-context">San Francisco · A2 → B1</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">„Endlich jemand, der mich nicht korrigiert wie ein Roboter. Ich übe mit Amanda für meine B1-Prüfung. Sie ist geduldig auf einer Art, die in echten Klassen selten ist."</p>
+      <div class="author">
+        <div class="author-avatar">M</div>
+        <div>
+          <div class="author-name">Marcus, 34</div>
+          <div class="author-context">São Paulo · Goethe B1</div>
+        </div>
+      </div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote">„Ich nutze Amanda morgens beim Kaffee. Zehn Minuten Smalltalk, danach ein paar Vokabeln. Mein Mann fragt, mit wem ich da rede — und ist überrascht wenn ich sage, das ist eine KI."</p>
+      <div class="author">
+        <div class="author-avatar">T</div>
+        <div>
+          <div class="author-name">Tomek, 41</div>
+          <div class="author-context">Warschau · Einbürgerung in Berlin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT JULIA -->
+<section class="about" id="ueber">
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="Julia.png" alt="Julia — deutschoderwas">
+    </div>
+    <div>
+      <h2>Hi, ich bin Julia.</h2>
+      <p>Als erfahrene DaZ-Lehrerin und ehemalige Deutschlernende selbst weiß ich genau, wo es hakt. Amanda ist mein nächster Schritt — meine KI-Tutorin, gebaut mit meiner Stimme, geprägt von meiner Art zu unterrichten, rund um die Uhr für dich verfügbar.</p>
+      <p>Wenn du was brauchst, schreib mir über meine Kanäle oder per Mail.</p>
+      <div class="about-socials">
+        <a href="https://open.spotify.com/show/7mJQW3DlmSoNXEUYcbw4FX" class="social-pill" target="_blank" rel="noopener">🎧 Podcast</a>
+        <a href="https://youtu.be/kKjCv9yF2Hw" class="social-pill" target="_blank" rel="noopener">▶️ YouTube</a>
+        <a href="https://whatsapp.com/channel/0029VbC7XoXEquiKDIE0a63x" class="social-pill" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="mailto:deutschoderwas@gmail.com" class="social-pill">✉️ Mail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-head">
+    <div class="section-tag">Häufige Fragen</div>
+    <h2>Alles, was du <span class="highlight">vor dem Reden</span> wissen willst</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Spricht Amanda wirklich Julias Stimme?</summary>
+      <p>Ja. Julia hat ihre Stimme professionell bei ElevenLabs geklont. Sie klingt genau wie sie — Tonfall, Intonation, Wärme — nur 24/7 verfügbar.<em>Yes. Julia's voice is cloned via ElevenLabs. It sounds exactly like her, available 24/7.</em></p>
+    </details>
+    <details class="faq-item">
+      <summary>Welche Niveaus deckt Amanda ab?</summary>
+      <p>A1 bis C2. Sie erkennt automatisch dein Niveau an deinen Sätzen — wenn du Anfänger:in bist, spricht sie langsamer mit einfachem Wortschatz. Bei Fortgeschrittenen geht sie in normales Tempo mit Idiomen.<em>A1 to C2 — Amanda detects your level automatically and adjusts.</em></p>
+    </details>
+    <details class="faq-item">
+      <summary>Muss ich was installieren?</summary>
+      <p>Nein. Amanda läuft komplett im Browser. Du brauchst nur ein Mikrofon und einen aktuellen Browser (Chrome oder Safari empfohlen).<em>No installation. Runs in your browser — just need a mic and Chrome or Safari.</em></p>
+    </details>
+    <details class="faq-item">
+      <summary>Wie hängt Amanda mit dem Sprechclub und den Kursen zusammen?</summary>
+      <p>Amanda ist deine tägliche Übungspartnerin — verfügbar 24/7, geduldig, ohne Druck. Der <a href="https://www.deutschoderwas-sprechclub.de" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">Sprechclub</a> ist die Live-Variante mit echten Menschen und Julia persönlich. Die <a href="https://stan.store/deutschoderwas" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">Kurse</a> geben dir die Struktur. Zusammen sind sie das Komplettpaket.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Kann Amanda meine Aussprache hören?</summary>
+      <p>Amanda versteht deine Worte über Spracherkennung. Eine detaillierte Aussprache-Bewertung (z.B. „dein R-Laut ist gut, dein CH braucht Übung") kommt in der nächsten Version.<em>She understands what you say. Detailed pronunciation scoring comes in the next version.</em></p>
+    </details>
+    <details class="faq-item">
+      <summary>Bin ich an einen Vertrag gebunden?</summary>
+      <p>Nein. Die Kostenlos-Variante kostet nichts und du brauchst keinen Account. Die bezahlten Pläne sind monatlich kündbar — kein Jahresvertrag, kein Druck.<em>No contracts. Free version is no-account. Paid plans cancel monthly.</em></p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA — Lead Magnet: 100 Fehler der Deutschlerner Mini-Kurs -->
+<section class="final-cta" id="newsletter">
+  <h2>Hol dir den <span class="highlight">100-Fehler-Mini-Kurs</span> — gratis</h2>
+  <p>Trag dich ein und bekomm direkt Zugang zu meinem kompletten Mini-Kurs <strong>„100 Fehler der Deutschlerner"</strong> — 10 Kapitel, 200+ Übungen, Quiz mit 20 Fragen und Cheatsheet. Plus: regelmäßige Lerntipps von Julia per Mail.<em>Get full access to my „100 Mistakes German Learners Make" mini-course — 10 chapters, 200+ exercises, plus weekly tips.</em></p>
+  <form class="nl-form" id="nlForm"
+        action="https://77660bde.sibforms.com/serve/MUIFAC-H4lvcy-aNrI5m0vbtuA9jEXVKztHwK4dHBr_t0FBXPbfn62WPptgc7qCyNhYy0qUhr6BybM785e3m1Zte60ZxiETjsdlu3avaMCaE2omESZjojGJ0RVwCU_kcd_hWXFGqKahTNQhCHR7S77bjw406u1oj2F1nzHSdVGbBFdMW79E6JKutr_i8FU5geiT4jRuv1DvruKLy"
+        method="POST" target="brevoTarget">
+    <input type="email" name="EMAIL" placeholder="deine@email.de" required autocomplete="email">
+    <input type="hidden" name="locale" value="de">
+    <input type="hidden" name="html_type" value="simple">
+    <button type="submit" class="btn btn-primary">Mini-Kurs sichern →</button>
+  </form>
+  <div class="nl-note" id="nlNote">Kostenlos &amp; jederzeit abbestellbar. Mit der Anmeldung stimmst du dem Erhalt des Mini-Kurs-Zugangs und der E-Mail-Tipps zu.</div>
+  <div class="nl-success" id="nlSuccess">🎉 Yes! Check deine Mails — dein Zugang zum Mini-Kurs ist unterwegs.</div>
+  <iframe name="brevoTarget" style="display:none" title="Brevo"></iframe>
+  <div class="cta-row">
+    <a href="#sprechen" class="btn btn-primary">🎤 Jetzt mit Amanda sprechen</a>
+    <a href="index.html" class="btn btn-ghost">Zur Hauptseite</a>
+  </div>
+</section>
+
+<!-- FOOTER — identisch zur index.html -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html#top" class="logo" style="color:#fff">
+        <img src="logo.PNG" alt="deutschoderwas" class="logo-icon">
+        <div>deutschoderwas<small style="color:rgba(255,255,255,.5)">Deutsch lernen mit Spaß</small></div>
+      </a>
+      <p>Strukturierte Kurse, ein interaktiver Sprechclub und Amanda, deine KI-Tutorin. Von Julia, für Lernende weltweit.</p>
+    </div>
+    <div>
+      <h4>Angebote</h4>
+      <ul>
+        <li><a href="https://stan.store/deutschoderwas" target="_blank" rel="noopener">Digitale Kurse</a></li>
+        <li><a href="https://stan.store/deutschoderwas/p/100-fehler-der-deutschlerner" target="_blank" rel="noopener">Minikurs</a></li>
+        <li><a href="https://www.deutschoderwas-sprechclub.de" target="_blank" rel="noopener">Sprechclub</a></li>
+        <li><a href="#sprechen">KI-Tutorin Amanda</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Folgen</h4>
+      <ul>
+        <li><a href="https://open.spotify.com/show/7mJQW3DlmSoNXEUYcbw4FX" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://youtu.be/kKjCv9yF2Hw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://whatsapp.com/channel/0029VbC7XoXEquiKDIE0a63x" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="mailto:deutschoderwas@gmail.com">Mail</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Newsletter</h4>
+      <p style="font-size:13px;line-height:1.5;color:rgba(255,255,255,.6)">Kostenlose Lerntipps &amp; exklusive Rabatte direkt in dein Postfach.</p>
+      <a href="index.html#newsletter" class="btn btn-primary" style="margin-top:14px;padding:11px 20px;font-size:14px">Jetzt anmelden</a>
+    </div>
+  </div>
+  <div class="impressum">
+    <strong style="color:rgba(255,255,255,.7)">Impressum:</strong> deutschoderwas · Julia Karackov (Inhaberin) · Wiesenstraße 38, 58119 Hagen, Deutschland · E-Mail: deutschoderwas@gmail.com · Telefon: +49 17643425306 · Umsatzsteuer-ID: DE676677898 · Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Julia Karackov · EU-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>
+  </div>
+  <div class="footer-bottom">
+    © 2026 deutschoderwas · Julia Karackov · Mit ♥ für Deutschlernende erstellt
+  </div>
+</footer>
+
+<!-- AMANDA WIDGET -->
+<elevenlabs-convai agent-id="agent_8401kt4vq157espa2msk6c448s5x"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+<!-- FREE-PLAN LIMIT MODAL — wird angezeigt sobald 5 Min/Tag verbraucht -->
+<div id="limitOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:24px;animation:fade .3s ease">
+  <div style="background:#fff;max-width:480px;width:100%;border-radius:28px;padding:40px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative">
+    <div style="font-size:60px;margin-bottom:14px">⏰</div>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:10px;line-height:1.15">Deine 5 Minuten<br/>sind heute aufgebraucht.</h2>
+    <p style="color:#6B7280;font-size:16px;line-height:1.55;margin-bottom:24px">Komm morgen wieder — oder upgrade auf <strong style="color:#DD0000">Sprechen-Plan</strong> für unbegrenzte Gespräche mit Amanda.</p>
+    <div style="display:flex;gap:10px;flex-direction:column">
+      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda-limit&utm_campaign=upgrade" target="_blank" rel="noopener" style="background:#DD0000;color:#fff;padding:14px 24px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;display:block">🚀 Auf Sprechen-Plan upgraden — 9,99 €/Monat</a>
+      <button onclick="document.getElementById('limitOverlay').style.display='none'" style="background:#fff;border:1.5px solid #F0E5D8;color:#1A1A1A;padding:12px 24px;border-radius:50px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit">Morgen wiederkommen</button>
+    </div>
+    <p style="font-size:12px;color:#9CA3AF;margin-top:18px">Heutiges Limit wird um Mitternacht zurückgesetzt.</p>
+  </div>
+</div>
+
+<!-- USAGE-COUNTER — zeigt verbleibende Free-Zeit unten links -->
+<div id="usageCounter" style="position:fixed;bottom:22px;left:22px;background:#fff;border:1.5px solid #F0E5D8;border-radius:30px;padding:9px 16px;font-size:13px;font-weight:700;color:#1A1A1A;box-shadow:0 10px 30px rgba(0,0,0,.1);z-index:150;display:none;align-items:center;gap:8px">
+  <span style="font-size:16px">⏱️</span>
+  <span><span id="usageLeft">5:00</span> heute frei</span>
+</div>
+
+<script>
+/* ============= MOBILE NAV ============= */
+const burger=document.getElementById('burger');
+if(burger){burger.onclick=()=>document.getElementById('navmenu').classList.toggle('show')}
+document.querySelectorAll('#navmenu a').forEach(a=>{
+  a.onclick=()=>document.getElementById('navmenu').classList.remove('show');
+});
+
+/* ============= NEWSLETTER (Lead Magnet 20 Sätze) ============= */
+const nlForm=document.getElementById('nlForm');
+if(nlForm){
+  nlForm.addEventListener('submit',()=>{
+    if(!nlForm.checkValidity())return;
+    setTimeout(()=>{
+      nlForm.style.display='none';
+      const note=document.getElementById('nlNote');
+      if(note)note.style.display='none';
+      const ok=document.getElementById('nlSuccess');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+    },250);
+  });
+}
+
+/* ============= FREE-PLAN 5-MIN/TAG-LIMIT =============
+   Trackt Sprechzeit pro Tag im localStorage. Pro Tag max. 300 Sek (= 5 Min).
+   Bei Erreichen: Widget wird ausgeblendet + Upgrade-Modal eingeblendet.
+   Mitternacht-Reset durch tagesbasierten Storage-Key. */
+const LIMIT_SEC = 5 * 60;
+function todayKey(){return 'amanda_usage_'+new Date().toISOString().slice(0,10)}
+function getUsage(){return parseInt(localStorage.getItem(todayKey())||'0',10)}
+function setUsage(v){localStorage.setItem(todayKey(),v)}
+function fmt(sec){const m=Math.floor(sec/60),s=sec%60;return m+':'+(s<10?'0':'')+s}
+
+let callStart = null;          // timestamp ms when current call started
+let tickInterval = null;
+const counterEl = document.getElementById('usageCounter');
+const leftEl = document.getElementById('usageLeft');
+const overlayEl = document.getElementById('limitOverlay');
+
+function updateCounter(){
+  const used = getUsage();
+  const left = Math.max(0, LIMIT_SEC - used);
+  leftEl.textContent = fmt(left);
+  counterEl.style.display = 'flex';
+  if(left <= 0) blockWidget();
+}
+function blockWidget(){
+  const w = document.querySelector('elevenlabs-convai');
+  if(w) w.style.display='none';
+  overlayEl.style.display='flex';
+}
+function startTick(){
+  if(tickInterval) return;
+  callStart = Date.now();
+  tickInterval = setInterval(()=>{
+    if(!callStart) return;
+    const elapsed = Math.floor((Date.now()-callStart)/1000);
+    const total = getUsage() + elapsed;
+    leftEl.textContent = fmt(Math.max(0, LIMIT_SEC - total));
+    if(total >= LIMIT_SEC){
+      setUsage(LIMIT_SEC);
+      callStart = null;
+      clearInterval(tickInterval);
+      tickInterval = null;
+      blockWidget();
+    }
+  }, 1000);
+}
+function stopTick(){
+  if(callStart){
+    const elapsed = Math.floor((Date.now()-callStart)/1000);
+    setUsage(Math.min(LIMIT_SEC, getUsage()+elapsed));
+    callStart = null;
+  }
+  if(tickInterval){clearInterval(tickInterval);tickInterval=null}
+  updateCounter();
+}
+
+// Listen for ElevenLabs ConvAI events — fallback wenn Event-Namen variieren
+['elevenlabs-convai:call','convai-call-started','elevenlabs-convai:started'].forEach(ev=>{
+  window.addEventListener(ev, startTick);
+});
+['elevenlabs-convai:end','convai-call-ended','elevenlabs-convai:ended','elevenlabs-convai:disconnected'].forEach(ev=>{
+  window.addEventListener(ev, stopTick);
+});
+
+// Robuster Fallback: DOM-Mutation auf Widget — wenn Mic-Anzeige sichtbar wird, läuft ein Call
+function watchWidget(){
+  const obs = new MutationObserver(()=>{
+    const widget = document.querySelector('elevenlabs-convai');
+    if(!widget) return;
+    // Schaue ins Shadow-DOM, falls vorhanden
+    const root = widget.shadowRoot || widget;
+    const text = (root.textContent||'').toLowerCase();
+    const isActive = text.includes('hörzu')||text.includes('listen')||text.includes('beenden')||text.includes('end call');
+    if(isActive && !callStart) startTick();
+    if(!isActive && callStart) stopTick();
+  });
+  obs.observe(document.body, {childList:true, subtree:true, attributes:true});
+}
+setTimeout(watchWidget, 2000);
+
+// Save remaining time on page leave
+window.addEventListener('beforeunload', stopTick);
+window.addEventListener('pagehide', stopTick);
+
+// Initial state — beim Laden prüfen ob Tageslimit schon erreicht
+window.addEventListener('load', ()=>{
+  setTimeout(()=>{
+    updateCounter();
+    if(getUsage() >= LIMIT_SEC) blockWidget();
+  }, 1500);
+});
+
+/* Debug helper (in Konsole verfügbar) — Tageszählung zurücksetzen:
+   localStorage.removeItem('amanda_usage_'+new Date().toISOString().slice(0,10));location.reload();
+*/
+</script>
+
+<style>
+@keyframes fade{from{opacity:0}to{opacity:1}}
+#limitOverlay{display:none}
+#limitOverlay[style*="flex"]{display:flex!important}
+@media(max-width:560px){
+  #usageCounter{bottom:auto;top:80px;left:50%;transform:translateX(-50%)}
+}
+</style>
+</body>
+</html>

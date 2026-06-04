@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>deutschoderwas — Deutsch lernen mit Spaß & Leichtigkeit</title>
+<meta name="description" content="Strukturierte digitale Deutschkurse, ein interaktiver Live-Sprechclub und Amanda, deine KI-Tutorin – damit du endlich frei und alltagsnah Deutsch sprichst. Von Julia, DaZ-Lehrerin.">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#DD0000;        /* Deutschland-Rot */
+  --primary-dark:#B30000;
+  --secondary:#1A1A1A;      /* Schwarz */
+  --accent:#FFCE00;         /* Deutschland-Gold */
+  --turquoise:#2DD4BF;      /* Türkis aus dem Logo */
+  --turquoise-soft:#A7F3D0;
+  --yellow:#FFCE00;
+  --cream:#FFFCF5;
+  --bg:#FFF8E0;
+  --text:#1A1A1A;
+  --text-soft:#6B7280;
+  --border:#F0E5D8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--text);line-height:1.55;overflow-x:hidden}
+
+/* TYPOGRAPHY */
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em;line-height:1.1}
+.serif-accent{font-style:italic;font-weight:500}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,249,242,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;max-width:100%}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;text-decoration:none;color:var(--secondary)}
+.logo-icon{width:42px;height:42px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo small{display:block;font-weight:500;font-size:11px;color:var(--text-soft);margin-top:-2px}
+.nav-menu{display:flex;align-items:center;gap:26px}
+.nav-menu a.link{text-decoration:none;color:var(--text-soft);font-weight:600;font-size:14px;transition:color .2s}
+.nav-menu a.link:hover{color:var(--secondary)}
+.nav-cta{background:var(--secondary);color:#fff;padding:10px 18px;border-radius:30px;text-decoration:none;font-weight:700;font-size:14px;transition:all .2s}
+.nav-cta:hover{background:#DD0000;transform:translateY(-1px)}
+.burger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:var(--secondary)}
+
+/* CONTAINER */
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* HERO */
+.hero{padding:50px 24px 70px;background:linear-gradient(135deg,#FFF9F2 0%,#FFF4D6 60%,#FFCE00 130%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-120px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(221,0,0,.14),transparent 70%);border-radius:50%;z-index:0}
+.hero::after{content:'';position:absolute;bottom:-200px;left:-150px;width:500px;height:500px;background:radial-gradient(circle,rgba(45,212,191,.18),transparent 70%);border-radius:50%;z-index:0}
+.hero-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(45,212,191,.18);color:var(--secondary);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:700;margin-bottom:20px;letter-spacing:.2px}
+.hero-tag::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--turquoise);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(38px,6vw,68px);font-weight:800;color:var(--secondary);margin-bottom:18px}
+.hero h1 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block}
+.hero .subtitle-en{font-family:'Space Grotesk',sans-serif;font-size:18px;color:var(--text-soft);font-style:italic;margin-bottom:24px;font-weight:500}
+.hero p.lead{font-size:18px;color:var(--text);margin-bottom:32px;max-width:520px;line-height:1.6}
+.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:15px;transition:all .25s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 25px rgba(221,0,0,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(221,0,0,.45);background:var(--primary-dark)}
+.btn-ghost{background:#fff;color:var(--secondary);border:1.5px solid var(--border)}
+.btn-ghost:hover{background:var(--cream);transform:translateY(-2px)}
+.btn-dark{background:var(--secondary);color:#fff}
+.btn-dark:hover{background:var(--primary);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:30px;flex-wrap:wrap;align-items:center}
+.hero-stats .stat b{font-family:'Space Grotesk',sans-serif;font-size:24px;color:var(--secondary);display:block;line-height:1}
+.hero-stats .stat small{font-size:13px;color:var(--text-soft)}
+.hero-stats .stars{color:var(--primary);font-size:18px;letter-spacing:2px}
+
+/* HERO PHOTO */
+.hero-photo-wrap{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-photo-frame{position:relative;width:100%;max-width:420px;aspect-ratio:1;border-radius:32px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.25);transform:rotate(2deg);transition:transform .4s;border:5px solid #fff}
+.hero-photo-frame:hover{transform:rotate(0deg) scale(1.02)}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-badge{position:absolute;background:#fff;border-radius:18px;padding:12px 18px;display:flex;align-items:center;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.12);font-weight:700;font-size:14px;z-index:2}
+.photo-badge.top{top:24px;left:-26px;transform:rotate(-5deg)}
+.photo-badge.bottom{bottom:40px;right:-20px;transform:rotate(4deg)}
+.photo-badge .dot{width:10px;height:10px;border-radius:50%;background:var(--turquoise);animation:pulse 1.5s infinite}
+.photo-badge .em{font-size:18px}
+
+/* SECTION COMMON */
+section{padding:90px 24px}
+.section-head{text-align:center;max-width:760px;margin:0 auto 60px}
+.section-tag{display:inline-block;background:var(--bg);color:var(--primary);padding:6px 14px;border-radius:30px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.section-head h2{font-size:clamp(32px,4.5vw,52px);font-weight:800;color:var(--secondary);margin-bottom:14px}
+.section-head h2 .highlight{color:var(--primary)}
+.section-head p{font-size:18px;color:var(--text-soft);max-width:600px;margin:0 auto;line-height:1.6}
+
+/* MINIKURS BANNER (Gratis Lead Magnet) */
+.minikurs{background:linear-gradient(135deg,#FFF4D6 0%,var(--accent) 100%);padding:80px 24px;position:relative;overflow:hidden}
+.minikurs::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(221,0,0,.12),transparent 70%);border-radius:50%}
+.minikurs-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center;position:relative;z-index:1}
+.minikurs-photo{position:relative;display:flex;justify-content:center;align-items:center}
+.minikurs-photo img{width:100%;max-width:380px;height:auto;display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.25))}
+.minikurs-tag{display:inline-flex;align-items:center;gap:8px;background:var(--secondary);color:var(--accent);padding:6px 14px;border-radius:30px;font-size:13px;font-weight:800;margin-bottom:18px;letter-spacing:1px;text-transform:uppercase}
+.minikurs h2{font-size:clamp(32px,4.5vw,48px);font-weight:800;color:var(--secondary);margin-bottom:14px;line-height:1.1}
+.minikurs h2 .highlight{color:var(--primary)}
+.minikurs p.lead{font-size:17px;color:var(--text);margin-bottom:22px;line-height:1.55;max-width:520px}
+.minikurs-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:28px;max-width:520px}
+.minikurs-feats li{display:flex;gap:8px;align-items:center;font-weight:600;font-size:15px;color:var(--secondary)}
+.minikurs-feats .em{font-size:18px}
+.minikurs-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* PAIN STRIP */
+.painstrip{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px 24px}
+.pain-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.pain-item{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#FFF9F2,#FFF4D6);border:1.5px solid var(--border);border-radius:20px;padding:22px}
+.pain-item .em{font-size:26px;line-height:1}
+.pain-item p{font-size:15px;font-weight:600;color:var(--text)}
+
+/* OFFERS (price-card style) */
+.offers{background:linear-gradient(180deg,var(--cream) 0%,#fff 100%)}
+.offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1080px;margin:0 auto;align-items:stretch}
+.offer-card{background:#fff;border:2px solid var(--border);border-radius:28px;padding:36px 32px;position:relative;transition:all .3s;display:flex;flex-direction:column}
+.offer-card:hover{transform:translateY(-6px);box-shadow:0 24px 50px rgba(0,0,0,.1)}
+.offer-card.featured{border-color:var(--primary);background:linear-gradient(135deg,#FFF9F2,#FFF4D6);box-shadow:0 30px 60px rgba(221,0,0,.18)}
+.offer-card.featured::before{content:'BELIEBT';position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:6px 16px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:1.5px}
+.offer-emoji{font-size:34px;margin-bottom:10px}
+.offer-card h3{font-size:24px;font-weight:800;color:var(--secondary);margin-bottom:6px}
+.offer-tier{font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--primary);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.offer-price{font-family:'Space Grotesk',sans-serif;font-size:40px;font-weight:800;color:var(--secondary);line-height:1;margin:0 0 16px}
+.offer-price span{font-size:15px;color:var(--text-soft);font-weight:600;margin-left:6px}
+.offer-features{list-style:none;margin-bottom:28px}
+.offer-features li{padding:10px 0;display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--text);border-bottom:1px solid var(--border)}
+.offer-features li::before{content:'✓';color:var(--primary);font-weight:900;font-size:18px;line-height:1.4}
+.offer-features li:last-child{border-bottom:none}
+.offer-card .btn{width:100%;justify-content:center;margin-top:auto}
+
+/* AMANDA BAND */
+.amanda-band{background:linear-gradient(135deg,#FFF9F2 0%,#FFF4D6 60%,var(--accent) 140%);position:relative;overflow:hidden}
+.amanda-band::after{content:'';position:absolute;top:-150px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(45,212,191,.22),transparent 70%);border-radius:50%}
+.amanda-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center;position:relative;z-index:1}
+.amanda-portrait{position:relative;border-radius:32px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.22);border:5px solid #fff;aspect-ratio:1;transform:rotate(-2deg);transition:transform .4s}
+.amanda-portrait:hover{transform:rotate(0)}
+.amanda-portrait img{width:100%;height:100%;object-fit:cover}
+.amanda-band h2{font-size:clamp(30px,4vw,48px);font-weight:800;color:var(--secondary);margin-bottom:8px}
+.amanda-band h2 .highlight{background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.amanda-band .subtitle-en{font-family:'Space Grotesk';font-style:italic;color:var(--text-soft);font-size:16px;margin-bottom:18px}
+.amanda-band p.lead{font-size:17px;color:var(--text);line-height:1.65;margin-bottom:22px;max-width:560px}
+.amanda-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.amanda-feats li{display:flex;gap:10px;align-items:flex-start;font-weight:600;font-size:15px}
+.amanda-feats .em{font-size:18px;line-height:1.2}
+
+/* HOW IT WORKS */
+.how{background:#fff;border-top:1px solid var(--border)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;max-width:1080px;margin:0 auto;position:relative}
+.steps::before{content:'';position:absolute;top:48px;left:12%;right:12%;height:3px;background:repeating-linear-gradient(90deg,var(--accent) 0,var(--accent) 8px,transparent 8px,transparent 16px);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:96px;height:96px;border-radius:50%;background:#fff;border:3px solid var(--accent);color:var(--secondary);font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 10px 30px rgba(255,206,0,.4)}
+.step h3{font-size:19px;font-weight:800;color:var(--secondary);margin-bottom:8px}
+.step p{font-size:15px;color:var(--text);line-height:1.6}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--secondary);color:#fff}
+.testimonials .section-head h2{color:#fff}
+.testimonials .section-head h2 .highlight{color:var(--accent)}
+.testimonials .section-head p{color:rgba(255,255,255,.7)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:1180px;margin:0 auto}
+.test-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:30px;backdrop-filter:blur(10px)}
+.test-card .stars{color:var(--accent);font-size:15px;letter-spacing:2px;margin-bottom:12px}
+.test-card .tag{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--turquoise);margin-bottom:10px;display:block}
+.test-card .quote{font-size:17px;font-weight:500;line-height:1.55;margin-bottom:22px;color:#fff}
+.test-card .author{display:flex;align-items:center;gap:12px}
+.test-card .author-avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;font-family:'Space Grotesk',sans-serif}
+.test-card .author-name{font-weight:700;font-size:15px}
+.test-card .author-context{font-size:13px;color:rgba(255,255,255,.7);margin-top:2px}
+
+/* MEDIA */
+.media{background:var(--cream)}
+.media-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.video-frame{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.18);aspect-ratio:16/9;background:#000;border:4px solid #fff}
+.video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.media-links{display:flex;flex-direction:column;gap:14px}
+.media-link{display:flex;align-items:center;gap:14px;background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:16px 18px;text-decoration:none;color:var(--secondary);font-weight:700;transition:all .2s}
+.media-link:hover{transform:translateX(4px);border-color:var(--primary)}
+.media-link .ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;color:#fff}
+.media-link small{display:block;font-weight:500;color:var(--text-soft);font-size:13px}
+
+/* ABOUT JULIA */
+.about{background:linear-gradient(135deg,var(--turquoise-soft) 0%,var(--turquoise) 100%);padding:100px 24px}
+.about-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:center}
+.about-photo{aspect-ratio:1;border-radius:32px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25);background:#fff;border:4px solid #fff}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about h2{font-size:clamp(32px,4vw,44px);font-weight:800;color:var(--secondary);margin-bottom:18px}
+.about p{font-size:17px;color:var(--text);line-height:1.7;margin-bottom:14px}
+.about-socials{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.social-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(26,26,26,.08);color:var(--secondary);padding:8px 16px;border-radius:30px;font-weight:700;font-size:14px;text-decoration:none;transition:all .2s}
+.social-pill:hover{background:var(--secondary);color:#fff}
+
+/* FAQ */
+.faq{background:var(--cream)}
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1.5px solid var(--border);border-radius:18px;padding:24px 28px;cursor:pointer;transition:all .25s}
+.faq-item:hover{border-color:var(--primary)}
+.faq-item summary{font-size:17px;font-weight:700;color:var(--secondary);display:flex;justify-content:space-between;align-items:center;list-style:none;gap:14px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:30px;color:var(--primary);transition:transform .25s;font-weight:300;line-height:1;flex-shrink:0}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{margin-top:18px;color:var(--text);font-size:15px;line-height:1.65}
+
+/* FINAL CTA + NEWSLETTER */
+.final-cta{background:var(--secondary);color:#fff;padding:100px 24px;text-align:center}
+.final-cta h2{font-size:clamp(34px,5vw,56px);font-weight:800;margin-bottom:16px;line-height:1.1}
+.final-cta h2 .highlight{color:var(--accent)}
+.final-cta p{font-size:18px;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 28px;line-height:1.6}
+.nl-form{max-width:520px;margin:0 auto 18px;display:flex;gap:12px;flex-wrap:wrap}
+.nl-form input[type=email]{flex:1;min-width:220px;background:#fff;border:2px solid transparent;border-radius:50px;padding:16px 22px;font-family:inherit;font-size:15px;color:var(--secondary);outline:none;transition:border-color .2s}
+.nl-form input[type=email]:focus{border-color:var(--accent)}
+.nl-form button{flex-shrink:0}
+.nl-note{font-size:13px;color:rgba(255,255,255,.55);max-width:520px;margin:0 auto 26px}
+.nl-success{max-width:520px;margin:0 auto 24px;background:rgba(45,212,191,.15);border:1.5px solid var(--turquoise);color:#fff;border-radius:18px;padding:20px 24px;font-weight:600;display:none}
+.nl-success.show{display:block}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* FOOTER */
+footer{background:#0A0A0A;color:rgba(255,255,255,.7);padding:60px 24px 30px;font-size:14px}
+.footer-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:36px}
+footer h4{color:#fff;font-weight:800;margin-bottom:14px;font-size:14px;letter-spacing:.5px}
+footer ul{list-style:none}
+footer li{margin-bottom:8px}
+footer a{color:rgba(255,255,255,.7);text-decoration:none;transition:color .2s}
+footer a:hover{color:var(--accent)}
+.footer-brand .logo{color:#fff;margin-bottom:14px}
+.footer-brand p{font-size:14px;line-height:1.55;color:rgba(255,255,255,.6)}
+.impressum{max-width:1180px;margin:0 auto 22px;font-size:12px;line-height:1.7;color:rgba(255,255,255,.45)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,.5);max-width:1180px;margin:0 auto}
+
+/* FLOATING AMANDA */
+.amanda-fab{position:fixed;bottom:22px;right:22px;z-index:200;background:var(--primary);color:#fff;border-radius:50px;padding:13px 20px 13px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 12px 30px rgba(221,0,0,.5);transition:transform .2s}
+.amanda-fab:hover{transform:scale(1.05)}
+.amanda-fab .fab-av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#fff);color:var(--primary-dark);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700}
+.amanda-fab .fab-pulse{position:absolute;top:-3px;right:-3px;width:14px;height:14px;background:var(--turquoise);border-radius:50%;border:2px solid #fff;animation:pulse 1.5s infinite}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}
+  .hero-cta-row,.hero-stats{justify-content:center}
+  .hero-photo-frame{max-width:340px;transform:rotate(0)}
+  .photo-badge.top{left:auto;right:-10px;top:16px}
+  .photo-badge.bottom{right:auto;left:-10px;bottom:30px}
+  .offer-grid{grid-template-columns:1fr;max-width:440px}
+  .amanda-grid{grid-template-columns:1fr;text-align:center}
+  .amanda-portrait{max-width:340px;margin:0 auto;transform:rotate(0)}
+  .amanda-feats{text-align:left;max-width:440px;margin:0 auto 28px}
+  .steps{grid-template-columns:1fr 1fr;gap:36px}
+  .steps::before{display:none}
+  .media-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr;text-align:center}
+  .about-photo{max-width:340px;margin:0 auto}
+  .about-socials{justify-content:center}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  section{padding:70px 20px}
+  .nav-menu{display:none}
+  .nav-menu.show{display:flex;position:absolute;top:71px;left:0;right:0;flex-direction:column;background:var(--cream);padding:20px 24px;gap:18px;box-shadow:0 14px 30px rgba(0,0,0,.1);align-items:flex-start}
+  .burger{display:block}
+}
+@media(max-width:560px){
+  .steps{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .amanda-feats{grid-template-columns:1fr}
+  .amanda-fab .fab-lbl{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#top" class="logo">
+    <img src="logo.PNG" alt="deutschoderwas" class="logo-icon">
+    <div>deutschoderwas<small>Deutsch lernen mit Spaß</small></div>
+  </a>
+  <div class="nav-menu" id="navmenu">
+    <a href="#minikurs" class="link">Mini-Kurs</a>
+    <a href="#angebote" class="link">Angebote</a>
+    <a href="#amanda" class="link">Amanda</a>
+    <a href="#plaene" class="link">Pläne</a>
+    <a href="#wie" class="link">So geht's</a>
+    <a href="#stimmen" class="link">Stimmen</a>
+    <a href="#faq" class="link">FAQ</a>
+    <a href="https://stan.store/deutschoderwas" class="nav-cta">Kurse ansehen</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menü">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">DaZ-Lehrerin · 10.000+ Lernende weltweit</div>
+      <h1>Endlich <span class="highlight">flüssig Deutsch</span> sprechen.</h1>
+      <p class="subtitle-en serif-accent">Learn to actually speak German — with fun and ease.</p>
+      <p class="lead">Als erfahrene DaZ-Lehrerin und Content Creatorin gebe ich dir strukturierte digitale Kurse, einen interaktiven Live-Sprechclub und mit <strong>Amanda</strong> deine persönliche KI-Tutorin – damit du echtes, alltagsnahes Deutsch sprichst.</p>
+      <div class="hero-cta-row">
+        <a href="#angebote" class="btn btn-primary">Kurse entdecken</a>
+        <a href="#amanda" class="btn btn-ghost">🤖 Amanda kennenlernen</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stars">★★★★★</span><small>Geliebt in 20+ Ländern</small></div>
+        <div class="stat"><b>10.000+</b><small>Lernende in der Community</small></div>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-badge top"><span class="em">👋</span> „Hallo, ich bin Julia!"</div>
+      <div class="hero-photo-frame">
+        <img src="Julia.png" alt="Julia — deutschoderwas">
+      </div>
+      <div class="photo-badge bottom"><span class="dot"></span> A1 bis C2</div>
+    </div>
+  </div>
+</header>
+
+<!-- MINIKURS BANNER (100 Fehler der Deutschlerner — gratis) -->
+<section class="minikurs" id="minikurs">
+  <div class="minikurs-grid">
+    <div class="minikurs-photo">
+      <img src="100fehlerbild.png" alt="100 Fehler der Deutschlerner — Mini-Kurs Cheatsheet">
+    </div>
+    <div>
+      <div class="minikurs-tag">⚡ Komplett kostenlos</div>
+      <h2>100 Fehler der <span class="highlight">Deutschlerner</span> — gratis lernen</h2>
+      <p class="lead">Mein kompletter Mini-Kurs: <strong>10 Kapitel, 200+ Übungen, Quiz und Cheatsheet</strong>. Erkenne die häufigsten Fehler, verstehe die Regeln, vermeide sie für immer — kostenlos und sofort verfügbar.</p>
+      <ul class="minikurs-feats">
+        <li><span class="em">📖</span> 100 Fehler erklärt</li>
+        <li><span class="em">🎯</span> 10 Kapitel</li>
+        <li><span class="em">✍️</span> 200+ Übungen</li>
+        <li><span class="em">🏆</span> Quiz mit 20 Fragen</li>
+        <li><span class="em">📋</span> Cheatsheet inklusive</li>
+        <li><span class="em">📱</span> Interaktive App</li>
+      </ul>
+      <div class="minikurs-cta">
+        <a href="https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/?utm_source=deutschoderwas&utm_medium=index&utm_campaign=minikurs-banner" class="btn btn-primary" target="_blank" rel="noopener">🚀 Mini-Kurs jetzt starten</a>
+        <a href="#newsletter" class="btn btn-ghost">Per E-Mail erhalten</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media(max-width:980px){
+  .minikurs-grid{grid-template-columns:1fr;text-align:center;gap:30px}
+  .minikurs-photo img{max-width:280px}
+  .minikurs-feats{grid-template-columns:1fr;text-align:left;max-width:340px;margin-left:auto;margin-right:auto}
+  .minikurs-cta{justify-content:center}
+}
+</style>
+
+<!-- PAIN STRIP -->
+<div class="painstrip">
+  <div class="pain-grid">
+    <div class="pain-item"><span class="em">😟</span><p>Du lernst seit Jahren, traust dich aber nicht, frei zu sprechen.</p></div>
+    <div class="pain-item"><span class="em">📚</span><p>Grammatikregeln bleiben abstrakt und sind im Gespräch sofort weg.</p></div>
+    <div class="pain-item"><span class="em">🗣️</span><p>Dir fehlt ein sicherer Ort, um ohne Angst zu üben.</p></div>
+    <div class="pain-item"><span class="em">⏰</span><p>Klassische Sprachschulen sind teuer, starr und langweilig.</p></div>
+  </div>
+</div>
+
+<!-- OFFERS -->
+<section class="offers" id="angebote">
+  <div class="section-head">
+    <div class="section-tag">Deine Wege zum Erfolg</div>
+    <h2>Wähle, was zu <span class="highlight">dir</span> passt</h2>
+    <p>Vom kleinen Einstieg bis zur Live-Begleitung – jeder Weg bringt dich näher ans freie Sprechen.</p>
+  </div>
+  <div class="offer-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px">
+
+    <div class="offer-card">
+      <div class="offer-emoji">📖</div>
+      <h3>Minikurs</h3>
+      <div class="offer-tier">Perfekter Einstieg</div>
+      <ul class="offer-features">
+        <li>„100 Fehler der Deutschlerner"</li>
+        <li>Die häufigsten Fehler vermeiden</li>
+        <li>Praktische Übungen zum Anwenden</li>
+        <li>Sofort starten, eigenes Tempo</li>
+      </ul>
+      <a href="https://stan.store/deutschoderwas/p/100-fehler-der-deutschlerner" class="btn btn-ghost" target="_blank" rel="noopener">Minikurs sichern</a>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-emoji">🎙️</div>
+      <h3>Sprechclub</h3>
+      <div class="offer-tier">Täglich live · Academy</div>
+      <ul class="offer-features">
+        <li>Täglicher Unterricht in der deutschoderwas Academy</li>
+        <li>Unterricht mit Julia & 2 weiteren Lehrern</li>
+        <li>Flexibel buchbar – je nach Niveau</li>
+        <li>Eigene Buchungsplattform</li>
+        <li>Geschützter Raum ohne Sprechangst</li>
+      </ul>
+      <a href="https://www.deutschoderwas-sprechclub.de" class="btn btn-dark" target="_blank" rel="noopener">Zum Sprechclub</a>
+    </div>
+
+  </div>
+  <p style="text-align:center;margin-top:30px;color:var(--text-soft)">Noch unsicher? Trag dich in die <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQp6oVCYWISkw4ChG0-Y4fACRkWn7XMpycMKOeUlGSGYJQsg/viewform" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">Sprechclub-Warteliste</a> ein.</p>
+</section>
+
+<!-- AMANDA BAND -->
+<section class="amanda-band" id="amanda">
+  <div class="amanda-grid">
+    <div class="amanda-portrait">
+      <img src="amanda.png" alt="Amanda — deine KI-Deutschtutorin">
+    </div>
+    <div>
+      <div class="section-tag">Neu: Deine KI-Tutorin</div>
+      <h2>Sprich mit <span class="highlight">Amanda</span></h2>
+      <p class="subtitle-en">Talk with Amanda — your AI German tutor, available 24/7.</p>
+      <p class="lead">Amanda ist meine KI-Deutschtutorin. Sie spricht mit meiner Stimme, korrigiert sanft und macht aus jedem Üben ein echtes Gespräch – geduldig, mit Humor und rund um die Uhr für dich da.</p>
+      <ul class="amanda-feats">
+        <li><span class="em">💬</span> Freie Konversation auf jedem Niveau</li>
+        <li><span class="em">✏️</span> Fehler sanft korrigieren</li>
+        <li><span class="em">📚</span> Grammatik einfach erklärt</li>
+        <li><span class="em">🎯</span> Prüfungs-Simulation (Goethe, B1)</li>
+      </ul>
+      <a href="amanda_landing.html" class="btn btn-primary" target="_blank" rel="noopener">🎤 Jetzt mit Amanda sprechen</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLÄNE -->
+<section class="offers" id="plaene" style="background:#fff;border-top:1px solid var(--border)">
+  <div class="section-head">
+    <span class="section-tag">Pläne & Preise</span>
+    <h2>Wähle deinen <span class="highlight">Amanda-Plan</span></h2>
+    <p>Starte kostenlos – und sprich so viel Deutsch, wie du willst. Monatlich, jederzeit kündbar.</p>
+  </div>
+  <div class="offer-grid">
+
+    <div class="offer-card">
+      <div class="offer-emoji">🆓</div>
+      <h3>Kostenlos</h3>
+      <div class="offer-tier">Zum Reinschnuppern</div>
+      <div class="offer-price">0 €<span>für immer</span></div>
+      <ul class="offer-features">
+        <li>5 Minuten Amanda täglich</li>
+        <li>Frei sprechen üben</li>
+        <li>Kein Risiko, kein Abo</li>
+      </ul>
+      <a href="amanda_landing.html" class="btn btn-ghost" target="_blank" rel="noopener">Kostenlos testen</a>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-emoji">💬</div>
+      <h3>Sprechen</h3>
+      <div class="offer-tier">Unbegrenzt mit Amanda</div>
+      <div class="offer-price">9,99 €<span>/ Monat</span></div>
+      <ul class="offer-features">
+        <li>24/7 mit Amanda sprechen</li>
+        <li>Unbegrenzte Gespräche</li>
+        <li>Alle Niveaus A1–C2</li>
+        <li>Monatlich kündbar</li>
+      </ul>
+      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=index&utm_campaign=sprechen" class="btn btn-dark" target="_blank" rel="noopener">Jetzt buchen →</a>
+    </div>
+
+    <div class="offer-card featured">
+      <div class="offer-emoji">⭐</div>
+      <h3>Premium</h3>
+      <div class="offer-tier">Alles drin</div>
+      <div class="offer-price">19,99 €<span>/ Monat</span></div>
+      <ul class="offer-features">
+        <li>Alles aus „Sprechen" – 24/7 mit Amanda</li>
+        <li>Zugang zum kompletten Videomaterial zu Themen aus Julias LIVE-Klassen</li>
+        <li>Geschlossene Community mit täglichen Übungen</li>
+        <li>Audionachrichten & Videos von Julia persönlich</li>
+      </ul>
+      <div style="margin-top:auto">
+        <button class="btn" style="background:#F0E5D8;color:#6B7280;cursor:not-allowed;width:100%;justify-content:center" disabled>⏳ Bald verfügbar</button>
+        <a href="#newsletter" style="display:block;text-align:center;margin-top:10px;color:#DD0000;text-decoration:none;font-weight:700;font-size:14px">👉 Auf die Warteliste setzen</a>
+      </div>
+    </div>
+
+  </div>
+  <p style="text-align:center;margin-top:30px;color:var(--text-soft);font-size:14px">Monatlich kündbar · 7-Tage-Geld-zurück bei Unzufriedenheit · Sichere Zahlung über Stan.</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="wie">
+  <div class="section-head">
+    <div class="section-tag">So funktioniert's</div>
+    <h2>In 4 Schritten zum <span class="highlight">freien Sprechen</span></h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Einstieg wählen</h3><p>Starte mit dem Minikurs oder einem strukturierten Kurs – passend zu deinem Niveau.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Mit Videos lernen</h3><p>Kurze, unterhaltsame Lernvideos mit alltagsnahen Beispielen, mehrmals pro Woche.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Mit Amanda üben</h3><p>Festige das Gelernte jederzeit mit deiner KI-Tutorin – geduldig und ohne Druck.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Live sprechen</h3><p>Wende alles im Sprechclub an – mit echten Menschen und persönlichem Feedback.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="stimmen">
+  <div class="section-head">
+    <div class="section-tag" style="background:rgba(255,206,0,.2);color:var(--accent)">Das sagen meine Schüler</div>
+    <h2>Echte Ergebnisse aus <span class="highlight">aller Welt</span></h2>
+    <p>Lernende aus über 20 Ländern sprechen heute freier Deutsch.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card">
+      <div class="stars">★★★★★</div><span class="tag">Lernvideos</span>
+      <p class="quote">Die kreativen Videos haben mir endlich geholfen, die deutsche Grammatik zu verstehen!</p>
+      <div class="author"><div class="author-avatar">S</div><div><div class="author-name">Sofia</div><div class="author-context">Italien · B2</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div><span class="tag">Sprechclub</span>
+      <p class="quote">Der wöchentliche Sprechclub hat mir den perfekten Einstieg gegeben. Endlich rede ich.</p>
+      <div class="author"><div class="author-avatar">T</div><div><div class="author-name">Takashi</div><div class="author-context">Japan · C1</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div><span class="tag">Video-Tutorials</span>
+      <p class="quote">Julias Lernvideos sind absolut fantastisch! Sie erklärt Grammatik so einfach.</p>
+      <div class="author"><div class="author-avatar">M</div><div><div class="author-name">Miguel</div><div class="author-context">Spanien · A2</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div><span class="tag">Sprechclub</span>
+      <p class="quote">Im Sprechclub kann ich ohne Angst sprechen und bekomme hilfreiches Feedback.</p>
+      <div class="author"><div class="author-avatar">E</div><div><div class="author-name">Elena</div><div class="author-context">Mexiko · B1</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div><span class="tag">Aussprache</span>
+      <p class="quote">Dank Julias Aussprachetipps klingen meine Umlaute endlich richtig!</p>
+      <div class="author"><div class="author-avatar">J</div><div><div class="author-name">Ji-hoon</div><div class="author-context">Korea · A2</div></div></div>
+    </div>
+    <div class="test-card">
+      <div class="stars">★★★★★</div><span class="tag">Lernmethoden</span>
+      <p class="quote">Julias Lerntipps haben meine Lernzeit halbiert und die Ergebnisse verdoppelt!</p>
+      <div class="author"><div class="author-avatar">E</div><div><div class="author-name">Emma</div><div class="author-context">Australien · A2</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDIA -->
+<section class="media" id="media">
+  <div class="section-head">
+    <div class="section-tag">Reinschnuppern</div>
+    <h2>So lernst du <span class="highlight">mit mir</span></h2>
+    <p>Schau dir ein Beispielvideo an und folge mir auf deinen Lieblingsplattformen.</p>
+  </div>
+  <div class="media-grid">
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/kKjCv9yF2Hw" title="Deutsch lernen mit deutschoderwas" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="media-links">
+      <a class="media-link" href="https://open.spotify.com/show/7mJQW3DlmSoNXEUYcbw4FX" target="_blank" rel="noopener"><span class="ic" style="background:#1DB954">🎧</span><span>Podcast auf Spotify<small>Alltagsnahe Themen auf Deutsch</small></span></a>
+      <a class="media-link" href="https://youtu.be/kKjCv9yF2Hw" target="_blank" rel="noopener"><span class="ic" style="background:#FF0000">▶️</span><span>YouTube-Kanal<small>Kurze Lernvideos, mehrmals pro Woche</small></span></a>
+      <a class="media-link" href="https://whatsapp.com/channel/0029VbC7XoXEquiKDIE0a63x" target="_blank" rel="noopener"><span class="ic" style="background:#25D366">💬</span><span>WhatsApp-Community<small>Tipps & Austausch mit Gleichgesinnten</small></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT JULIA -->
+<section class="about" id="ueber">
+  <div class="about-grid">
+    <div class="about-photo">
+      <img src="Julia.png" alt="Julia — deutschoderwas">
+    </div>
+    <div>
+      <h2>Hi, ich bin Julia.</h2>
+      <p>Als erfahrene DaZ-Lehrerin und ehemalige Deutschlernende selbst weiß ich genau, wo es hakt. Deshalb habe ich Methoden entwickelt, die wirklich funktionieren: alltagsrelevant, unterhaltsam und sofort anwendbar.</p>
+      <p>Mit meinen Kursen, dem Sprechclub und jetzt auch Amanda als KI-Tutorin lernst du nicht nur die Sprache – du fühlst dich auch in der deutschen Kultur zuhause.</p>
+      <div class="about-socials">
+        <a href="https://open.spotify.com/show/7mJQW3DlmSoNXEUYcbw4FX" class="social-pill" target="_blank" rel="noopener">🎧 Podcast</a>
+        <a href="https://youtu.be/kKjCv9yF2Hw" class="social-pill" target="_blank" rel="noopener">▶️ YouTube</a>
+        <a href="https://whatsapp.com/channel/0029VbC7XoXEquiKDIE0a63x" class="social-pill" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a href="mailto:deutschoderwas@gmail.com" class="social-pill">✉️ Mail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-head">
+    <div class="section-tag">Häufige Fragen</div>
+    <h2>Alles, was du <span class="highlight">wissen musst</span></h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item"><summary>Für welches Niveau sind die Angebote geeignet?</summary><p>Von A1 bis C2 ist für jedes Niveau etwas dabei. Der Minikurs eignet sich besonders gut zum Einstieg, der Sprechclub für alle, die aktiv sprechen wollen. Amanda passt sich automatisch deinem Niveau an.</p></details>
+    <details class="faq-item"><summary>Was genau ist Amanda, die KI-Tutorin?</summary><p>Amanda ist meine persönliche KI-Deutschtutorin. Sie spricht mit meiner Stimme, übt Gespräche mit dir, erklärt Grammatik, korrigiert geduldig und ist rund um die Uhr verfügbar – eine ideale Ergänzung zu Videos und Live-Sprechclub.</p></details>
+    <details class="faq-item"><summary>Wie läuft der Sprechclub ab?</summary><p>In der deutschoderwas Academy gibt es täglich Live-Unterricht – mit Julia und zwei weiteren Lehrern. Über unsere eigene Buchungsplattform buchst du den Unterricht flexibel und passend zu deinem Niveau. Du sprichst in einem geschützten Rahmen ohne Angst und bekommst persönliches Feedback. Alle Infos und Preise findest du auf der Sprechclub-Seite.</p></details>
+    <details class="faq-item"><summary>Kann ich in meinem eigenen Tempo lernen?</summary><p>Ja! Die digitalen Kurse und der Minikurs sind jederzeit und überall abrufbar. Du lernst flexibel, wann und wo es dir passt – und kombinierst das ideal mit dem Live-Sprechclub und Amanda.</p></details>
+    <details class="faq-item"><summary>Wie bleibe ich auf dem Laufenden?</summary><p>Melde dich zum Newsletter an und erhalte kostenlose Lerntipps, exklusive Rabatte auf Kurse und Neuigkeiten direkt in dein Postfach. Oder tritt der WhatsApp-Community bei.</p></details>
+  </div>
+</section>
+
+<!-- FINAL CTA + NEWSLETTER -->
+<section class="final-cta" id="newsletter">
+  <h2>Bereit, endlich <span class="highlight">Deutsch zu sprechen?</span></h2>
+  <p>Melde dich zum Newsletter an und erhalte kostenlose Lerntipps, exklusive Rabatte auf Kurse und Neuigkeiten direkt in dein Postfach.</p>
+  <form class="nl-form" id="nlForm" action="https://77660bde.sibforms.com/serve/MUIFAFxGmUPyAs01xjMCGfgSlBNdW6UOsHJsnTVskjW0rkCrOHGOpws9CMOflwga08XLd4cj9zK2bM9BEULUpsoyK3EGL6s6noGx3PfzaOEWkfc5gNZcfXt2_dkqOi5GYmyWpYGukizFZg1d4azqho-IxGgbLR6yNh-4UzqMCfbbNZSll_H6fiuDzZLkiuJAkn0l7cYLpDfE6r91" method="POST" target="brevoTarget">
+    <input type="email" name="EMAIL" placeholder="deine@email.de" required>
+    <input type="hidden" name="locale" value="de">
+    <input type="hidden" name="html_type" value="simple">
+    <button type="submit" class="btn btn-primary">Lerntipps sichern →</button>
+  </form>
+  <div class="nl-note" id="nlNote">Kostenlos & jederzeit abbestellbar. Mit der Anmeldung stimmst du dem Erhalt des Newsletters zu.</div>
+  <div class="nl-success" id="nlSuccess">🎉 Fast geschafft! Bitte bestätige deine Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.</div>
+  <iframe name="brevoTarget" style="display:none" title="Brevo"></iframe>
+  <div class="cta-row">
+    <a href="https://stan.store/deutschoderwas" class="btn btn-primary" target="_blank" rel="noopener">Kurse ansehen</a>
+    <a href="https://www.deutschoderwas-sprechclub.de" class="btn btn-ghost" target="_blank" rel="noopener">Zum Sprechclub</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#top" class="logo" style="color:#fff">
+        <img src="logo.PNG" alt="deutschoderwas" class="logo-icon">
+        <div>deutschoderwas<small style="color:rgba(255,255,255,.5)">Deutsch lernen mit Spaß</small></div>
+      </a>
+      <p>Strukturierte Kurse, ein interaktiver Sprechclub und Amanda, deine KI-Tutorin. Von Julia, für Lernende weltweit.</p>
+    </div>
+    <div>
+      <h4>Angebote</h4>
+      <ul>
+        <li><a href="https://stan.store/deutschoderwas" target="_blank" rel="noopener">Digitale Kurse</a></li>
+        <li><a href="https://stan.store/deutschoderwas/p/100-fehler-der-deutschlerner" target="_blank" rel="noopener">Minikurs</a></li>
+        <li><a href="https://www.deutschoderwas-sprechclub.de" target="_blank" rel="noopener">Sprechclub</a></li>
+        <li><a href="#amanda">KI-Tutorin Amanda</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Folgen</h4>
+      <ul>
+        <li><a href="https://open.spotify.com/show/7mJQW3DlmSoNXEUYcbw4FX" target="_blank" rel="noopener">Podcast</a></li>
+        <li><a href="https://youtu.be/kKjCv9yF2Hw" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://whatsapp.com/channel/0029VbC7XoXEquiKDIE0a63x" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="mailto:deutschoderwas@gmail.com">Mail</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Newsletter</h4>
+      <p style="font-size:13px;line-height:1.5;color:rgba(255,255,255,.6)">Kostenlose Lerntipps & exklusive Rabatte direkt in dein Postfach.</p>
+      <a href="#newsletter" class="btn btn-primary" style="margin-top:14px;padding:11px 20px;font-size:14px">Jetzt anmelden</a>
+    </div>
+  </div>
+  <div class="impressum">
+    <strong style="color:rgba(255,255,255,.7)">Impressum:</strong> deutschoderwas · Julia Karackov (Inhaberin) · Wiesenstraße 38, 58119 Hagen, Deutschland · E-Mail: deutschoderwas@gmail.com · Telefon: +49 17643425306 · Umsatzsteuer-ID: DE676677898 · Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Julia Karackov · EU-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>
+  </div>
+  <div class="footer-bottom">
+    © 2026 deutschoderwas · Julia Karackov · Mit ♥ für Deutschlernende erstellt
+  </div>
+</footer>
+
+<!-- FLOATING AMANDA LINK -->
+<a class="amanda-fab" href="amanda_landing.html" target="_blank" rel="noopener" aria-label="Mit Amanda sprechen">
+  <span class="fab-av">A</span><span class="fab-lbl">Mit Amanda sprechen</span><span class="fab-pulse"></span>
+</a>
+
+<script>
+/* Mobile-Navigation */
+document.getElementById('burger').onclick=()=>{
+  document.getElementById('navmenu').classList.toggle('show');
+};
+document.querySelectorAll('#navmenu a').forEach(a=>{
+  a.onclick=()=>document.getElementById('navmenu').classList.remove('show');
+});
+
+/* Newsletter: Anmeldung geht im Hintergrund an Brevo (verstecktes iframe),
+   Besucher bleibt auf der Seite und sieht eine Dankesmeldung. */
+const nlForm=document.getElementById('nlForm');
+if(nlForm){
+  nlForm.addEventListener('submit',()=>{
+    if(!nlForm.checkValidity())return; // bei ungültiger E-Mail nichts ausblenden
+    setTimeout(()=>{
+      nlForm.style.display='none';
+      const note=document.getElementById('nlNote');
+      if(note)note.style.display='none';
+      const ok=document.getElementById('nlSuccess');
+      ok.classList.add('show');
+      ok.scrollIntoView({behavior:'smooth',block:'center'});
+    },250);
+  });
+}
+</script>
+</body>
+</html>
