@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/amanda", "destination": "/amanda_landing.html" }
+    { "source": "/amanda", "destination": "/amanda_landing.html" },
+    { "source": "/mini-kurs", "destination": "/mini-kurs.html" }
   ]
 }
