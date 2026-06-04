@@ -387,47 +387,38 @@ footer a:hover{color:var(--accent)}
   <p style="text-align:center;margin-top:30px;color:var(--text-soft);font-size:14px">Monatlich kündbar · 7-Tage-Geld-zurück bei Unzufriedenheit · Sichere Zahlung über Stan.</p>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS (Dauerschleife) -->
+<style>
+.test-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.test-track{display:flex;gap:24px;width:max-content;animation:tmarquee 40s linear infinite}
+.test-marquee:hover .test-track{animation-play-state:paused}
+.test-track .test-card{width:360px;flex-shrink:0}
+@keyframes tmarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.fb-cta{max-width:680px;margin:50px auto 0;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:24px;padding:36px 32px;text-align:center}
+.fb-cta h3{font-size:23px;font-weight:800;color:#fff;margin-bottom:8px}
+.fb-cta p{font-size:15px;color:rgba(255,255,255,.75);margin-bottom:22px;line-height:1.55}
+@media(max-width:560px){.test-track .test-card{width:300px}}
+</style>
 <section class="testimonials" id="stimmen">
   <div class="section-head">
-    <div class="section-tag" style="background:rgba(255,206,0,.2);color:var(--accent)">Erste Stimmen zu Amanda</div>
+    <div class="section-tag" style="background:rgba(255,206,0,.2);color:var(--accent)">Echte Stimmen</div>
     <h2>Was Lerner über <span class="highlight">Amanda</span> sagen</h2>
-    <p>Aus den ersten Wochen mit Amanda — echte Stimmen aus 3 Kontinenten.</p>
+    <p>Echte Stimmen aus den ersten Wochen mit Amanda – und es werden täglich mehr.</p>
   </div>
-  <div class="test-grid">
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">„Ich hab in fünf Minuten mehr Deutsch gesprochen als in sechs Monaten Duolingo. Amanda lacht über meine Fehler — auf die gute Art. Ich vergesse, dass sie eine KI ist."</p>
-      <div class="author">
-        <div class="author-avatar">S</div>
-        <div>
-          <div class="author-name">Sara, 28</div>
-          <div class="author-context">San Francisco · A2 → B1</div>
-        </div>
-      </div>
+  <div class="test-marquee">
+    <div class="test-track">
+      <div class="test-card"><div class="stars">★★★★★</div><p class="quote">„Ich hab in fünf Minuten mehr Deutsch gesprochen als in sechs Monaten Duolingo. Amanda lacht über meine Fehler — auf die gute Art. Ich vergesse, dass sie eine KI ist."</p><div class="author"><div class="author-avatar">S</div><div><div class="author-name">Sara, 28</div><div class="author-context">San Francisco · A2 → B1</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="quote">„Endlich jemand, der mich nicht korrigiert wie ein Roboter. Ich übe mit Amanda für meine B1-Prüfung. Sie ist geduldig auf einer Art, die in echten Klassen selten ist."</p><div class="author"><div class="author-avatar">M</div><div><div class="author-name">Marcus, 34</div><div class="author-context">São Paulo · Goethe B1</div></div></div></div>
+      <div class="test-card"><div class="stars">★★★★★</div><p class="quote">„Ich nutze Amanda morgens beim Kaffee. Zehn Minuten Smalltalk, danach ein paar Vokabeln. Mein Mann fragt, mit wem ich da rede — und ist überrascht wenn ich sage, das ist eine KI."</p><div class="author"><div class="author-avatar">T</div><div><div class="author-name">Tomek, 41</div><div class="author-context">Warschau · Einbürgerung in Berlin</div></div></div></div>
+      <div class="test-card" aria-hidden="true"><div class="stars">★★★★★</div><p class="quote">„Ich hab in fünf Minuten mehr Deutsch gesprochen als in sechs Monaten Duolingo. Amanda lacht über meine Fehler — auf die gute Art. Ich vergesse, dass sie eine KI ist."</p><div class="author"><div class="author-avatar">S</div><div><div class="author-name">Sara, 28</div><div class="author-context">San Francisco · A2 → B1</div></div></div></div>
+      <div class="test-card" aria-hidden="true"><div class="stars">★★★★★</div><p class="quote">„Endlich jemand, der mich nicht korrigiert wie ein Roboter. Ich übe mit Amanda für meine B1-Prüfung. Sie ist geduldig auf einer Art, die in echten Klassen selten ist."</p><div class="author"><div class="author-avatar">M</div><div><div class="author-name">Marcus, 34</div><div class="author-context">São Paulo · Goethe B1</div></div></div></div>
+      <div class="test-card" aria-hidden="true"><div class="stars">★★★★★</div><p class="quote">„Ich nutze Amanda morgens beim Kaffee. Zehn Minuten Smalltalk, danach ein paar Vokabeln. Mein Mann fragt, mit wem ich da rede — und ist überrascht wenn ich sage, das ist eine KI."</p><div class="author"><div class="author-avatar">T</div><div><div class="author-name">Tomek, 41</div><div class="author-context">Warschau · Einbürgerung in Berlin</div></div></div></div>
     </div>
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">„Endlich jemand, der mich nicht korrigiert wie ein Roboter. Ich übe mit Amanda für meine B1-Prüfung. Sie ist geduldig auf einer Art, die in echten Klassen selten ist."</p>
-      <div class="author">
-        <div class="author-avatar">M</div>
-        <div>
-          <div class="author-name">Marcus, 34</div>
-          <div class="author-context">São Paulo · Goethe B1</div>
-        </div>
-      </div>
-    </div>
-    <div class="test-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">„Ich nutze Amanda morgens beim Kaffee. Zehn Minuten Smalltalk, danach ein paar Vokabeln. Mein Mann fragt, mit wem ich da rede — und ist überrascht wenn ich sage, das ist eine KI."</p>
-      <div class="author">
-        <div class="author-avatar">T</div>
-        <div>
-          <div class="author-name">Tomek, 41</div>
-          <div class="author-context">Warschau · Einbürgerung in Berlin</div>
-        </div>
-      </div>
-    </div>
+  </div>
+  <div class="fb-cta">
+    <h3>💬 Du sprichst mit Amanda? Teile dein Feedback!</h3>
+    <p>Erzähl uns kurz, wie Amanda dir hilft. Die schönsten Feedbacks erscheinen hier in der Dauerschleife.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe3wrgIxLy99j24iUPbio1aTPO-EhSaS06lgSb9COFlwaz7Uw/viewform" class="btn btn-primary" id="feedbackBtn" target="_blank" rel="noopener">Feedback geben</a>
   </div>
 </section>
 
