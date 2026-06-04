@@ -279,9 +279,9 @@ footer a:hover{color:var(--accent)}
   </a>
   <div class="nav-menu" id="navmenu">
     <a href="#minikurs" class="link">Mini-Kurs</a>
-    <a href="#angebote" class="link">Angebote</a>
     <a href="#amanda" class="link">Amanda</a>
     <a href="#plaene" class="link">Pläne</a>
+    <a href="#sprechclub" class="link">Sprechclub</a>
     <a href="#wie" class="link">So geht's</a>
     <a href="#stimmen" class="link">Stimmen</a>
     <a href="#faq" class="link">FAQ</a>
@@ -362,46 +362,6 @@ footer a:hover{color:var(--accent)}
   </div>
 </div>
 
-<!-- OFFERS -->
-<section class="offers" id="angebote">
-  <div class="section-head">
-    <div class="section-tag">Deine Wege zum Erfolg</div>
-    <h2>Wähle, was zu <span class="highlight">dir</span> passt</h2>
-    <p>Vom kleinen Einstieg bis zur Live-Begleitung – jeder Weg bringt dich näher ans freie Sprechen.</p>
-  </div>
-  <div class="offer-grid" style="grid-template-columns:repeat(2,1fr);max-width:760px">
-
-    <div class="offer-card">
-      <div class="offer-emoji">📖</div>
-      <h3>Minikurs</h3>
-      <div class="offer-tier">Perfekter Einstieg</div>
-      <ul class="offer-features">
-        <li>„100 Fehler der Deutschlerner"</li>
-        <li>Die häufigsten Fehler vermeiden</li>
-        <li>Praktische Übungen zum Anwenden</li>
-        <li>Sofort starten, eigenes Tempo</li>
-      </ul>
-      <a href="https://stan.store/deutschoderwas/p/100-fehler-der-deutschlerner" class="btn btn-ghost" target="_blank" rel="noopener">Minikurs sichern</a>
-    </div>
-
-    <div class="offer-card">
-      <div class="offer-emoji">🎙️</div>
-      <h3>Sprechclub</h3>
-      <div class="offer-tier">Täglich live · Academy</div>
-      <ul class="offer-features">
-        <li>Täglicher Unterricht in der deutschoderwas Academy</li>
-        <li>Unterricht mit Julia & 2 weiteren Lehrern</li>
-        <li>Flexibel buchbar – je nach Niveau</li>
-        <li>Eigene Buchungsplattform</li>
-        <li>Geschützter Raum ohne Sprechangst</li>
-      </ul>
-      <a href="https://www.deutschoderwas-sprechclub.de" class="btn btn-dark" target="_blank" rel="noopener">Zum Sprechclub</a>
-    </div>
-
-  </div>
-  <p style="text-align:center;margin-top:30px;color:var(--text-soft)">Noch unsicher? Trag dich in die <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQp6oVCYWISkw4ChG0-Y4fACRkWn7XMpycMKOeUlGSGYJQsg/viewform" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700">Sprechclub-Warteliste</a> ein.</p>
-</section>
-
 <!-- AMANDA BAND -->
 <section class="amanda-band" id="amanda">
   <div class="amanda-grid">
@@ -479,6 +439,48 @@ footer a:hover{color:var(--accent)}
 
   </div>
   <p style="text-align:center;margin-top:30px;color:var(--text-soft);font-size:14px">Monatlich kündbar · 7-Tage-Geld-zurück bei Unzufriedenheit · Sichere Zahlung über Stan.</p>
+</section>
+
+<!-- SPRECHCLUB LIVE -->
+<style>
+.sclive{background:linear-gradient(135deg,#FFF9F2 0%,#FFF4D6 60%,var(--turquoise-soft) 150%);position:relative;overflow:hidden}
+.sclive::after{content:'';position:absolute;bottom:-160px;left:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(45,212,191,.22),transparent 70%);border-radius:50%}
+.sclive-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.05fr;gap:54px;align-items:center;position:relative;z-index:1}
+.sclive-photo{position:relative}
+.sclive-photo img{width:100%;border-radius:28px;box-shadow:0 28px 70px rgba(0,0,0,.22);border:5px solid #fff;display:block}
+.sclive-live{position:absolute;top:18px;left:18px;display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;padding:7px 15px;border-radius:30px;font-size:13px;font-weight:800;letter-spacing:.3px;box-shadow:0 8px 20px rgba(221,0,0,.4)}
+.sclive-live .dot{width:9px;height:9px;border-radius:50%;background:#fff;animation:pulse 1.5s infinite}
+.sclive h2{font-size:clamp(30px,4vw,46px);font-weight:800;color:var(--secondary);margin-bottom:14px;line-height:1.1}
+.sclive p.lead{font-size:17px;color:var(--text);line-height:1.65;margin-bottom:24px;max-width:520px}
+.sclive-feats{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.sclive-feats li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--secondary);font-weight:600}
+.sclive-feats li::before{content:'✓';color:var(--turquoise);font-weight:900;font-size:18px;line-height:1.2}
+.sclive-cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){.sclive-grid{grid-template-columns:1fr;text-align:center}.sclive-photo{max-width:420px;margin:0 auto;order:2}.sclive-feats{text-align:left;max-width:440px;margin:0 auto 28px}.sclive-cta{justify-content:center}}
+</style>
+<section class="sclive" id="sprechclub">
+  <div class="sclive-grid">
+    <div class="sclive-photo">
+      <img src="https://www.deutschoderwas-sprechclub.de/Bildschirmfoto%202025-10-14%20um%2022.19.45.png" alt="Live-Unterricht im Sprechclub – die Gruppe spricht gemeinsam Deutsch per Video">
+      <span class="sclive-live"><span class="dot"></span> Jetzt live</span>
+    </div>
+    <div>
+      <div class="section-tag">Täglich live · Academy</div>
+      <h2>Sprich live im <span class="highlight">Sprechclub</span></h2>
+      <p class="lead">Wenn du bereit bist, mit echten Menschen zu sprechen: In der <strong>deutschoderwas Academy</strong> gibt es täglich Live-Unterricht – mit Julia und zwei weiteren Lehrern. Du buchst flexibel nach deinem Niveau und sprichst in einem geschützten Raum, ganz ohne Angst.</p>
+      <ul class="sclive-feats">
+        <li>Täglicher Live-Unterricht in der deutschoderwas Academy</li>
+        <li>Unterricht mit Julia &amp; 2 weiteren Lehrern</li>
+        <li>Flexibel buchbar – je nach Niveau</li>
+        <li>Eigene Buchungsplattform</li>
+        <li>Geschützter Raum ohne Sprechangst</li>
+      </ul>
+      <div class="sclive-cta">
+        <a href="https://www.deutschoderwas-sprechclub.de" class="btn btn-dark" target="_blank" rel="noopener">🎙️ Zum Sprechclub</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeQp6oVCYWISkw4ChG0-Y4fACRkWn7XMpycMKOeUlGSGYJQsg/viewform" class="btn btn-ghost" target="_blank" rel="noopener">Auf die Warteliste</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- HOW IT WORKS -->
