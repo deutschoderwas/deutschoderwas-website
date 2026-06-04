@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alltagsdeutsch · 20 Wörter, die jeder benutzt</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--teal:#2ABFBF;--navy:#1a2340;--red:#CC0000;--gold:#FFCC00;
+    --c-start:#2ABFBF;--c-yes:#2f9e6b;--c-no:#CC0000;--c-emo:#d99300;--c-soft:#5566cc;
+    --bg:#f4f6f9;--card:#ffffff;--line:#e3e8ef;--line2:#c9d2e0;--ink:#1a2340;--muted:#5b6678;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:60px;}
+  header{background:var(--navy);color:#fff;padding:26px 20px 22px;position:relative;overflow:hidden;}
+  .flag{position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,#000 0 33.3%,var(--red) 33.3% 66.6%,var(--gold) 66.6% 100%);}
+  header .kicker{font-family:'Courier New',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:6px;}
+  header h1{font-size:1.5rem;font-weight:800;line-height:1.2;}
+  header h1 span{color:var(--gold);}
+  header .meta{margin-top:8px;font-size:.85rem;color:#c7cfdd;}
+  .logo{font-family:'Courier New',monospace;font-weight:700;font-size:.78rem;color:#fff;opacity:.85;margin-bottom:14px;letter-spacing:1px;}
+  .logo b{color:var(--teal);}
+  input.tabctrl{position:absolute;opacity:0;pointer-events:none;}
+  nav{position:sticky;top:0;z-index:40;background:var(--card);border-bottom:2px solid var(--line);display:flex;flex-wrap:wrap;gap:4px;padding:8px;box-shadow:0 2px 10px rgba(26,35,64,.06);}
+  nav label{flex:1 1 auto;text-align:center;font-size:.8rem;font-weight:700;padding:9px 6px;border-radius:9px;color:var(--muted);cursor:pointer;white-space:nowrap;transition:.15s;border:1px solid transparent;}
+  nav label:hover{background:#eef6f6;color:var(--navy);}
+  .panel{display:none;padding:20px 16px 10px;max-width:800px;margin:0 auto;}
+  #t1:checked~nav label[for="t1"],#t2:checked~nav label[for="t2"],#t3:checked~nav label[for="t3"],
+  #t4:checked~nav label[for="t4"],#t5:checked~nav label[for="t5"],#t6:checked~nav label[for="t6"]{
+    background:var(--teal);color:#fff;box-shadow:0 2px 6px rgba(42,191,191,.4);}
+  #t1:checked~#p1,#t2:checked~#p2,#t3:checked~#p3,#t4:checked~#p4,#t5:checked~#p5,#t6:checked~#p6{display:block;}
+  h2.section{font-size:1.25rem;font-weight:800;color:var(--navy);margin:6px 0 14px;display:flex;align-items:center;gap:9px;}
+  h2.section::before{content:"";width:8px;height:26px;border-radius:3px;background:var(--teal);}
+  h3{font-size:1.05rem;font-weight:800;color:var(--navy);margin:24px 0 8px;}
+  .lead{color:var(--muted);font-size:.92rem;margin-bottom:8px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px;box-shadow:0 1px 3px rgba(26,35,64,.04);}
+  .box{border-left:4px solid var(--teal);background:#effafa;border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0;}
+  .box.rule{border-color:var(--gold);background:#fffbeb;}
+  .box.warn{border-color:var(--red);background:#fdeced;}
+  .box .lbl{font-family:'Courier New',monospace;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:var(--muted);display:block;margin-bottom:4px;}
+
+  /* Kategorie-Überschrift */
+  .cat{display:flex;align-items:center;gap:9px;margin:22px 0 10px;font-weight:800;color:var(--navy);font-size:1rem;}
+  .cat .dot{width:14px;height:14px;border-radius:50%;flex:0 0 auto;}
+  .cat .n{margin-left:auto;font-family:'Courier New',monospace;font-size:.72rem;color:var(--muted);font-weight:700;}
+
+  /* Wort-Karten */
+  .wordgrid{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+  .word{border:1px solid var(--line);border-top:4px solid var(--line2);border-radius:12px;padding:11px 13px;background:#fff;}
+  .word .w{font-size:1.25rem;font-weight:800;line-height:1.1;}
+  .word .m{font-size:.85rem;color:var(--muted);margin:2px 0 5px;}
+  .word .e{font-size:.9rem;color:#2b3550;font-style:italic;}
+  .word.start{border-top-color:var(--c-start);} .word.start .w{color:#0a7a7a;}
+  .word.yes{border-top-color:var(--c-yes);}   .word.yes .w{color:var(--c-yes);}
+  .word.no{border-top-color:var(--c-no);}     .word.no .w{color:var(--c-no);}
+  .word.emo{border-top-color:var(--c-emo);}   .word.emo .w{color:#b87a00;}
+  .word.soft{border-top-color:var(--c-soft);} .word.soft .w{color:var(--c-soft);}
+
+  /* Dialog-Sprechblasen */
+  .dlg2{margin:6px 0;}
+  .turn{display:flex;gap:8px;margin-bottom:8px;align-items:flex-end;}
+  .turn.r{flex-direction:row-reverse;}
+  .rolepic{flex:0 0 auto;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Courier New',monospace;font-weight:800;font-size:.7rem;color:#fff;}
+  .turn.l .rolepic{background:var(--teal);}
+  .turn.r .rolepic{background:var(--navy);}
+  .bubble{max-width:82%;padding:8px 12px;border-radius:15px;font-size:.95rem;line-height:1.4;}
+  .turn.l .bubble{background:#eef6f6;color:#22303f;border-bottom-left-radius:4px;}
+  .turn.r .bubble{background:var(--navy);color:#fff;border-bottom-right-radius:4px;}
+  .hl{font-weight:800;text-decoration:underline;text-underline-offset:2px;}
+  .scene{font-family:'Courier New',monospace;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);font-weight:700;margin:14px 0 4px;}
+
+  details.fc{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:9px;overflow:hidden;}
+  details.fc summary{list-style:none;cursor:pointer;padding:13px 16px;font-weight:800;color:var(--navy);font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;}
+  details.fc summary::-webkit-details-marker{display:none;}
+  details.fc summary::after{content:"+";color:var(--teal);font-size:1.4rem;font-weight:800;}
+  details.fc[open] summary::after{content:"–";}
+  details.fc[open] summary{background:#effafa;}
+  details.fc .ans{padding:11px 16px 15px;color:#2b3550;border-top:1px dashed var(--line);}
+
+  .exq{margin-bottom:18px;}
+  .exq p.q{font-weight:700;margin-bottom:6px;}
+  .exq select{font-family:'Nunito';font-size:.95rem;font-weight:700;padding:5px 8px;border:2px solid var(--teal);border-radius:8px;background:#fff;color:var(--navy);margin:0 3px;}
+  .num{display:inline-block;width:24px;height:24px;line-height:24px;text-align:center;background:var(--navy);color:#fff;border-radius:50%;font-size:.78rem;font-weight:800;margin-right:7px;}
+  details.sol{margin-top:7px;}
+  details.sol summary{cursor:pointer;font-size:.82rem;font-weight:800;color:var(--teal);font-family:'Courier New',monospace;letter-spacing:.5px;list-style:none;}
+  details.sol summary::-webkit-details-marker{display:none;}
+  details.sol summary::before{content:"▸ ";}
+  details.sol[open] summary::before{content:"▾ ";}
+  details.sol .s{margin-top:6px;background:#effafa;border-radius:8px;padding:9px 12px;font-size:.92rem;color:#244;}
+  .mc label{display:block;padding:7px 12px;border:1px solid var(--line);border-radius:9px;margin:5px 0;cursor:pointer;font-weight:600;transition:.12s;}
+  .mc label:hover{border-color:var(--teal);background:#effafa;}
+  .spk{border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:0 10px 10px 0;padding:11px 14px;margin-bottom:9px;background:#fff;}
+  .pair2{border:1px solid var(--line);border-radius:11px;padding:11px 13px;margin-bottom:9px;background:#fff;}
+  .pair2 b{color:var(--navy);}
+  footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:24px;font-family:'Courier New',monospace;}
+  @media(min-width:620px){nav label{flex:0 1 auto;padding:9px 14px;}header h1{font-size:1.85rem;}.wordgrid{grid-template-columns:repeat(3,1fr);}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="flag"></div>
+  <div class="logo">deutsch<b>oder</b>was · Sprechclub</div>
+  <div class="kicker">Übungsblatt · Umgangssprache · A2–B2</div>
+  <h1>Alltagsdeutsch: 20 Wörter, <span>die jeder benutzt</span></h1>
+  <div class="meta">Die kleinen Wörter, die im Lehrbuch fehlen – aber in jedem echten Gespräch vorkommen.</div>
+</header>
+
+<input class="tabctrl" type="radio" name="tabs" id="t1" checked>
+<input class="tabctrl" type="radio" name="tabs" id="t2">
+<input class="tabctrl" type="radio" name="tabs" id="t3">
+<input class="tabctrl" type="radio" name="tabs" id="t4">
+<input class="tabctrl" type="radio" name="tabs" id="t5">
+<input class="tabctrl" type="radio" name="tabs" id="t6">
+
+<nav>
+  <label for="t1">Die 20 Wörter</label>
+  <label for="t2">Im Alltag</label>
+  <label for="t3">Flashcards</label>
+  <label for="t4">Übungen I</label>
+  <label for="t5">Übungen II</label>
+  <label for="t6">Tipps</label>
+</nav>
+
+<!-- ================= 1 · DIE 20 WÖRTER ================= -->
+<section class="panel" id="p1">
+  <h2 class="section">Die 20 Wörter – nach Funktion</h2>
+  <p class="lead">Sortiert nach ihrer Aufgabe im Gespräch. Die Farbe zeigt die Gruppe.</p>
+
+  <div class="cat"><span class="dot" style="background:var(--c-start)"></span>Gespräch starten &amp; steuern<span class="n">3</span></div>
+  <div class="wordgrid">
+    <div class="word start"><div class="w">Na?</div><div class="m">Hallo, wie geht's? / Was gibt's?</div><div class="e">„Na, alles gut?"</div></div>
+    <div class="word start"><div class="w">Also</div><div class="m">Satzanfang, Übergang</div><div class="e">„Also, ich sehe das anders."</div></div>
+    <div class="word start"><div class="w">So</div><div class="m">Start, Ende oder Übergang</div><div class="e">„So, jetzt fangen wir an."</div></div>
+  </div>
+
+  <div class="cat"><span class="dot" style="background:var(--c-yes)"></span>Zustimmen &amp; bestätigen<span class="n">4</span></div>
+  <div class="wordgrid">
+    <div class="word yes"><div class="w">Genau</div><div class="m">richtig, stimmt</div><div class="e">„Um 18 Uhr?" – „Genau."</div></div>
+    <div class="word yes"><div class="w">Eben</div><div class="m">genau deshalb</div><div class="e">„Deshalb übe ich." – „Eben!"</div></div>
+    <div class="word yes"><div class="w">Passt</div><div class="m">in Ordnung, okay</div><div class="e">„Treffen um 19 Uhr?" – „Passt."</div></div>
+    <div class="word yes"><div class="w">Doch</div><div class="m">Widerspruch zu etwas Negativem</div><div class="e">„Du kannst kein Deutsch." – „Doch!"</div></div>
+  </div>
+
+  <div class="cat"><span class="dot" style="background:var(--c-no)"></span>Ablehnen &amp; zweifeln<span class="n">3</span></div>
+  <div class="wordgrid">
+    <div class="word no"><div class="w">Nö</div><div class="m">nein (locker)</div><div class="e">„Hast du gelernt?" – „Nö."</div></div>
+    <div class="word no"><div class="w">Joa</div><div class="m">ja … so halb, unentschlossen</div><div class="e">„War's gut?" – „Joa, ging so."</div></div>
+    <div class="word no"><div class="w">Quatsch</div><div class="m">Unsinn!</div><div class="e">„Du bist zu alt." – „Quatsch!"</div></div>
+  </div>
+
+  <div class="cat"><span class="dot" style="background:var(--c-emo)"></span>Gefühl &amp; Reaktion zeigen<span class="n">5</span></div>
+  <div class="wordgrid">
+    <div class="word emo"><div class="w">Krass</div><div class="m">unglaublich, heftig (+/–)</div><div class="e">„Krass, wie teuer das ist!"</div></div>
+    <div class="word emo"><div class="w">Boah</div><div class="m">starke Emotion</div><div class="e">„Boah, ist das lecker!"</div></div>
+    <div class="word emo"><div class="w">Mensch</div><div class="m">Überraschung oder Ärger</div><div class="e">„Mensch, pass doch auf!"</div></div>
+    <div class="word emo"><div class="w">Alter</div><div class="m">Kumpel / Überraschung (salopp)</div><div class="e">„Alter, das war knapp!"</div></div>
+    <div class="word emo"><div class="w">Tja</div><div class="m">da kann man nichts machen</div><div class="e">„Der Zug ist weg." – „Tja."</div></div>
+  </div>
+
+  <div class="cat"><span class="dot" style="background:var(--c-soft)"></span>Abschwächen &amp; reagieren<span class="n">5</span></div>
+  <div class="wordgrid">
+    <div class="word soft"><div class="w">mal</div><div class="m">macht Sätze freundlicher</div><div class="e">„Komm mal her." / „Schau mal."</div></div>
+    <div class="word soft"><div class="w">irgendwie</div><div class="m">schwer zu erklären</div><div class="e">„Irgendwie bin ich müde."</div></div>
+    <div class="word soft"><div class="w">eigentlich</div><div class="m">ursprünglich war's anders gedacht</div><div class="e">„Eigentlich wollte ich lernen."</div></div>
+    <div class="word soft"><div class="w">halt</div><div class="m">so ist es eben</div><div class="e">„Er ist halt so."</div></div>
+    <div class="word soft"><div class="w">Ach so</div><div class="m">jetzt verstehe ich</div><div class="e">„Deshalb warst du krank." – „Ach so."</div></div>
+  </div>
+</section>
+
+<!-- ================= 2 · IM ALLTAG ================= -->
+<section class="panel" id="p2">
+  <h2 class="section">Im Alltag – echte Mini-Dialoge</h2>
+  <p class="lead">So klingen die Wörter im echten Gespräch. Die markierten Wörter sind die „Lehrbuch-Lücken".</p>
+
+  <div class="card">
+    <div class="scene">An der Bushaltestelle</div>
+    <div class="dlg2">
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble"><span class="hl">Na?</span> Lange nicht gesehen!</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Joa</span>, stimmt. Wie läuft's?</div></div>
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble"><span class="hl">Tja</span> … der Bus ist gerade weg.</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Mensch</span>! Dann warten wir <span class="hl">halt</span>.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="scene">Chat mit einer Freundin</div>
+    <div class="dlg2">
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble">Treffen wir uns um 19 Uhr?</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Passt</span>.</div></div>
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble">Kommst du mit ins Kino?</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Eigentlich</span> wollte ich lernen … aber <span class="hl">joa</span>, ich komme mit.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="scene">Im Café</div>
+    <div class="dlg2">
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble"><span class="hl">Boah</span>, ist der Kuchen lecker!</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Krass</span>, oder? Und gar nicht teuer.</div></div>
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble">Der ist hausgemacht.</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Ach so</span>, deshalb schmeckt er so gut.</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="scene">Kleine Diskussion</div>
+    <div class="dlg2">
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble">Du sprichst doch gar kein Deutsch.</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Doch</span>! Ich lerne seit zwei Jahren.</div></div>
+      <div class="turn l"><div class="rolepic">A</div><div class="bubble">Dann musst du eben mehr sprechen.</div></div>
+      <div class="turn r"><div class="rolepic">B</div><div class="bubble"><span class="hl">Eben.</span> <span class="hl">Genau</span> das mache ich hier.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3 · FLASHCARDS ================= -->
+<section class="panel" id="p3">
+  <h2 class="section">Flashcards</h2>
+  <p class="lead">Tippe auf ein Wort. Erst raten, dann Bedeutung + Beispiel ansehen.</p>
+  <details class="fc"><summary>Na?</summary><div class="ans">Hallo / Wie geht's? / Was gibt's? · <i>Na, alles gut?</i></div></details>
+  <details class="fc"><summary>Joa</summary><div class="ans">Ja … so halb, unentschlossen. · <i>War der Film gut? – Joa, ging so.</i></div></details>
+  <details class="fc"><summary>Nö</summary><div class="ans">Nein (locker, gesprochen). · <i>Willst du arbeiten? – Nö.</i></div></details>
+  <details class="fc"><summary>Tja</summary><div class="ans">Da kann man nichts machen. · <i>Das Restaurant hat zu. – Tja.</i></div></details>
+  <details class="fc"><summary>Doch</summary><div class="ans">Widerspruch gegen eine negative Aussage. · <i>Du hast keinen Hunger. – Doch!</i></div></details>
+  <details class="fc"><summary>Halt</summary><div class="ans">So ist es eben. · <i>Das Wetter ist halt schlecht.</i></div></details>
+  <details class="fc"><summary>Eben</summary><div class="ans">Genau deshalb / genau das. · <i>Deshalb musst du lernen. – Eben!</i></div></details>
+  <details class="fc"><summary>mal</summary><div class="ans">Macht Bitten freundlicher. · <i>Komm mal her. / Hör mal zu.</i></div></details>
+  <details class="fc"><summary>Krass</summary><div class="ans">Unglaublich, heftig (positiv/negativ). · <i>Krass, du sprichst schon B2!</i></div></details>
+  <details class="fc"><summary>Alter</summary><div class="ans">Kumpel / Ausdruck der Überraschung (sehr salopp). · <i>Alter, bist du verrückt?</i></div></details>
+  <details class="fc"><summary>Genau</summary><div class="ans">Richtig, stimmt. · <i>Berlin ist die Hauptstadt. – Genau.</i></div></details>
+  <details class="fc"><summary>Quatsch</summary><div class="ans">Unsinn! · <i>Das stimmt nicht. – Quatsch!</i></div></details>
+  <details class="fc"><summary>Boah</summary><div class="ans">Starke Emotion. · <i>Boah, ist das heiß!</i></div></details>
+  <details class="fc"><summary>Mensch</summary><div class="ans">Überraschung oder Ärger. · <i>Mensch, das habe ich vergessen!</i></div></details>
+  <details class="fc"><summary>Ach so</summary><div class="ans">Jetzt verstehe ich. · <i>Ich komme morgen nicht. – Ach so.</i></div></details>
+  <details class="fc"><summary>irgendwie</summary><div class="ans">Schwer genau zu erklären. · <i>Das sieht irgendwie komisch aus.</i></div></details>
+  <details class="fc"><summary>eigentlich</summary><div class="ans">Ursprünglich war der Plan anders. · <i>Eigentlich wollte ich sparen.</i></div></details>
+  <details class="fc"><summary>Passt</summary><div class="ans">In Ordnung, okay. · <i>Ist die Größe okay? – Passt.</i></div></details>
+  <details class="fc"><summary>Also</summary><div class="ans">Satzanfang / Übergang. · <i>Also, was machen wir jetzt?</i></div></details>
+  <details class="fc"><summary>So</summary><div class="ans">Start, Ende oder Übergang. · <i>So, das war's.</i></div></details>
+</section>
+
+<!-- ================= 4 · ÜBUNGEN I ================= -->
+<section class="panel" id="p4">
+  <h2 class="section">Übungen I</h2>
+  <div class="card">
+    <h3 style="margin-top:0">A · Welches Wort passt? (Dropdown)</h3>
+    <div class="exq"><p class="q"><span class="num">1</span>„
+      <select><option>…</option><option>Na</option><option>Tja</option><option>Nö</option></select>
+      , alles gut bei dir?"</p>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Na</b> – lockere Begrüßung/Frage.</div></details></div>
+    <div class="exq"><p class="q"><span class="num">2</span>„Der Zug ist weg." – „
+      <select><option>…</option><option>Genau</option><option>Tja</option><option>Doch</option></select>
+      , da kann man nichts machen."</p>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Tja</b> – Resignation.</div></details></div>
+    <div class="exq"><p class="q"><span class="num">3</span>„Du kannst kein Deutsch." – „
+      <select><option>…</option><option>Nö</option><option>Doch</option><option>Joa</option></select>
+      ! Ich lerne seit zwei Jahren."</p>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Doch</b> – Widerspruch gegen eine negative Aussage.</div></details></div>
+    <div class="exq"><p class="q"><span class="num">4</span>„Treffen wir uns um 19 Uhr?" – „
+      <select><option>…</option><option>Passt</option><option>Quatsch</option><option>Boah</option></select>
+      ."</p>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Passt</b> – in Ordnung.</div></details></div>
+    <div class="exq"><p class="q"><span class="num">5</span>„Deshalb solltest du üben." – „
+      <select><option>…</option><option>Eben</option><option>Tja</option><option>Nö</option></select>
+      !"</p>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Eben</b> – genau deshalb.</div></details></div>
+    <div class="exq"><p class="q"><span class="num">6</span>„Komm
+      <select><option>…</option><option>mal</option><option>halt</option><option>so</option></select>
+      her, ich zeig dir was."</p>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>mal</b> – macht die Bitte freundlicher.</div></details></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">B · Bedeutung → Wort (Multiple Choice)</h3>
+    <div class="exq mc"><p class="q"><span class="num">7</span>Welches Wort heißt „Unsinn!"?</p>
+      <label>○ Genau</label><label>○ Quatsch</label><label>○ Passt</label>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Quatsch</b></div></details></div>
+    <div class="exq mc"><p class="q"><span class="num">8</span>Welches Wort heißt „Jetzt verstehe ich"?</p>
+      <label>○ Ach so</label><label>○ Eben</label><label>○ Na</label>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>Ach so</b></div></details></div>
+    <div class="exq mc"><p class="q"><span class="num">9</span>„Das Wetter ist ___ schlecht." (so ist es eben)</p>
+      <label>○ halt</label><label>○ doch</label><label>○ krass</label>
+      <details class="sol"><summary>Lösung</summary><div class="s"><b>halt</b></div></details></div>
+  </div>
+</section>
+
+<!-- ================= 5 · ÜBUNGEN II ================= -->
+<section class="panel" id="p5">
+  <h2 class="section">Übungen II</h2>
+  <div class="card">
+    <h3 style="margin-top:0">C · Reaktion finden – was sagst du?</h3>
+    <p class="lead">Reagiere mit nur einem Wort.</p>
+    <div class="exq"><p class="q"><span class="num">1</span>Dein Freund zeigt dir Schuhe für 300 €.</p>
+      <details class="sol"><summary>Idee</summary><div class="s"><b>Krass!</b> / <b>Boah!</b> (Überraschung)</div></details></div>
+    <div class="exq"><p class="q"><span class="num">2</span>Das Restaurant hat überraschend geschlossen.</p>
+      <details class="sol"><summary>Idee</summary><div class="s"><b>Tja.</b> / <b>Mensch!</b></div></details></div>
+    <div class="exq"><p class="q"><span class="num">3</span>Jemand sagt etwas, das einfach nicht stimmt.</p>
+      <details class="sol"><summary>Idee</summary><div class="s"><b>Quatsch!</b></div></details></div>
+    <div class="exq"><p class="q"><span class="num">4</span>Du verstehst endlich den Grund für etwas.</p>
+      <details class="sol"><summary>Idee</summary><div class="s"><b>Ach so!</b></div></details></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">D · Dialog vervollständigen</h3>
+    <p class="q" style="font-weight:600">Ergänze 4 passende Wörter:<br>– „___, alles klar?"<br>– „___, ging so. Und du?"<br>– „Treffen wir uns später?" – „___."<br>– „Aber pünktlich, ja?" – „___, mach ich."</p>
+    <details class="sol"><summary>Beispiel-Lösung</summary><div class="s">– „<b>Na</b>, alles klar?" – „<b>Joa</b>, ging so. Und du?" – „Treffen wir uns später?" – „<b>Passt</b>." – „Aber pünktlich, ja?" – „<b>Genau</b>, mach ich."</div></details>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0">E · Sprechen (zu zweit)</h3>
+    <div class="spk"><b>Smalltalk-Challenge:</b> Führt einen 1-Minuten-Smalltalk und benutzt mindestens 5 der Wörter (z. B. <i>Na, joa, passt, krass, ach so</i>).</div>
+    <div class="spk"><b>Reaktions-Pingpong:</b> A erzählt eine Mini-Neuigkeit, B reagiert nur mit einem dieser Wörter. Dann tauschen.</div>
+  </div>
+</section>
+
+<!-- ================= 6 · TIPPS ================= -->
+<section class="panel" id="p6">
+  <h2 class="section">Profi-Tipps</h2>
+
+  <div class="box warn"><span class="lbl">Achtung: Register</span>
+    Diese Wörter sind <strong>gesprochene Umgangssprache</strong>. In E-Mails, Bewerbungen oder formellen Texten besser vermeiden.
+    Besonders salopp sind <strong>Alter</strong>, <strong>krass</strong> und <strong>Nö</strong> – unter Freunden top, im Büro mit Fremden eher nicht.</div>
+
+  <h3>Leicht zu verwechseln</h3>
+  <div class="pair2"><b>doch</b> ist die Geheimwaffe: Es widerspricht einer <i>negativen</i> Aussage oder Frage. „Du kommst nicht?" – „Doch!" (= ich komme).</div>
+  <div class="pair2"><b>eben</b> vs. <b>genau</b>: Beide heißen „stimmt". <i>Eben</i> betont zusätzlich „genau deshalb / das sage ich ja". <i>Genau</i> ist neutrale Zustimmung.</div>
+  <div class="pair2"><b>joa</b> vs. <b>ja</b>: <i>Ja</i> ist klar. <i>Joa</i> heißt „ja, aber nur so halb" – man will sich nicht festlegen.</div>
+  <div class="pair2"><b>na</b> vs. <b>na ja</b>: <i>Na?</i> ist eine lockere Begrüßung/Frage. <i>Na ja …</i> drückt Zweifel oder Einschränkung aus.</div>
+  <div class="pair2"><b>mal</b> ist oft fast „bedeutungslos" – es macht Bitten weicher: „Warte mal." klingt freundlicher als „Warte!".</div>
+
+  <div class="box rule"><span class="lbl">Lern-Tipp</span>
+    Such dir pro Tag 2–3 Wörter aus und benutze sie bewusst in echten Gesprächen oder Sprachnachrichten. Nach einer Woche hast du die meisten „drauf".</div>
+</section>
+
+<footer>deutschoderwas · Sprechclub · Alltagsdeutsch · 20 Wörter</footer>
+
+</body>
+</html>

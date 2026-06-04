@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gratis-Übungsblatt · 20 Alltagswörter — deutschoderwas</title>
+<meta name="description" content="Trag dich mit deiner E-Mail ein und erhalte sofort das Übungsblatt „20 Alltagswörter, die jeder benutzt" von deutschoderwas." />
+
+<!-- ============================================================ -->
+<!--  deutschoderwas · Anmelde-Seite (Gate) für das Übungsblatt    -->
+<!--  Nach Eintrag der E-Mail öffnet sich das Übungsblatt.         -->
+<!--                                                               -->
+<!--  >>> ANPASSEN (siehe ANLEITUNG.md):                           -->
+<!--   1) BREVO_FORM_URL   (unten im <script>)                     -->
+<!--   2) DOKUMENT_DATEI    (unten im <script>)                    -->
+<!-- ============================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* --- Farben aus dem Übungsblatt --- */
+    --teal:#2ABFBF;
+    --teal-d:#0a7a7a;
+    --navy:#1a2340;
+    --red:#CC0000;
+    --gold:#FFCC00;
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --line:#e3e8ef;
+    --line2:#c9d2e0;
+    --ink:#1a2340;
+    --muted:#5b6678;
+    --shadow:0 18px 40px -22px rgba(26,35,64,.45);
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(900px 420px at 85% -8%, #e2f6f6 0%, transparent 60%),
+      radial-gradient(700px 420px at -10% 10%, #eaeef7 0%, transparent 55%),
+      var(--bg);
+    color:var(--ink);line-height:1.6;min-height:100vh;
+    display:flex;flex-direction:column;
+  }
+  .wrap{width:100%;max-width:680px;margin:0 auto;padding:0 20px}
+
+  /* Header */
+  header{padding:24px 0 4px}
+  .brand{display:flex;align-items:center;gap:11px;justify-content:center;text-decoration:none;color:inherit}
+  .brand .logo{
+    font-family:'Courier New',monospace;font-weight:700;font-size:1rem;color:var(--navy);
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 13px;letter-spacing:.5px;
+    box-shadow:0 4px 14px -8px rgba(26,35,64,.4)
+  }
+  .brand .logo b{color:var(--teal)}
+
+  /* Card */
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:22px 0 46px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);width:100%;text-align:center;overflow:hidden;position:relative
+  }
+  .flag{height:6px;background:linear-gradient(90deg,#000 0 33.3%,var(--red) 33.3% 66.6%,var(--gold) 66.6% 100%)}
+  .card-body{padding:34px 32px 36px}
+
+  .kicker{font-family:'Courier New',monospace;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--teal-d);font-weight:700;margin-bottom:10px}
+  .doc-icon{
+    width:70px;height:70px;border-radius:18px;margin:0 auto 16px;
+    background:linear-gradient(135deg,#e2f6f6,#cfeeee);
+    display:grid;place-items:center;font-size:33px
+  }
+  h1{font-size:1.7rem;font-weight:800;line-height:1.2;letter-spacing:-.3px;margin-bottom:4px}
+  h1 span{color:var(--teal-d)}
+  .sub-en{color:var(--muted);font-style:italic;font-size:.95rem;margin-bottom:16px}
+  .lead{color:var(--muted);font-size:1rem;max-width:50ch;margin:0 auto 20px}
+
+  .perks{list-style:none;display:flex;flex-wrap:wrap;gap:9px 16px;justify-content:center;margin:0 auto 24px;max-width:440px}
+  .perks li{display:flex;align-items:center;gap:7px;font-weight:700;font-size:.9rem;color:var(--navy)}
+  .perks li span{font-size:1.05rem}
+
+  /* Formular */
+  form{max-width:400px;margin:0 auto;text-align:left}
+  .flab{display:block;font-weight:700;font-size:.85rem;margin-bottom:6px;color:var(--navy)}
+  input[type=email]{
+    width:100%;padding:14px 15px;font-size:1rem;font-family:inherit;
+    border:2px solid var(--line2);border-radius:12px;background:#fbfdfe;transition:.15s
+  }
+  input[type=email]:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(42,191,191,.15);background:#fff}
+  .hp{position:absolute!important;left:-5000px;height:0;overflow:hidden}
+  .consent{display:flex;gap:9px;align-items:flex-start;margin:12px 2px 16px;font-size:.8rem;color:var(--muted)}
+  .consent input{margin-top:3px;width:16px;height:16px;accent-color:var(--teal);flex:0 0 auto}
+  .consent a{color:var(--teal-d);font-weight:700}
+  .btn{
+    width:100%;border:none;cursor:pointer;font-weight:800;font-size:1.05rem;color:#fff;
+    background:linear-gradient(135deg,var(--teal),var(--teal-d));
+    padding:15px 22px;border-radius:12px;box-shadow:0 12px 24px -11px rgba(42,191,191,.8);transition:.12s
+  }
+  .btn:hover{transform:translateY(-2px)}
+  .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+  .form-note{text-align:center;font-size:.76rem;color:var(--muted);margin-top:12px}
+  .error-msg{display:none;background:#fdeced;color:var(--red);border-radius:11px;padding:11px 14px;font-weight:700;font-size:.88rem;margin-bottom:14px;text-align:center}
+
+  /* Erfolg */
+  .success{display:none;animation:pop .4s ease}
+  @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+  .check{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;background:#e2f6f6;color:var(--teal-d);display:grid;place-items:center;font-size:38px}
+  .dl-btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:1.1rem;color:#fff;text-decoration:none;
+    background:linear-gradient(135deg,var(--navy),#0e1428);
+    padding:15px 28px;border-radius:12px;margin-top:6px;box-shadow:0 14px 26px -12px rgba(26,35,64,.8);transition:.12s
+  }
+  .dl-btn:hover{transform:translateY(-2px)}
+  .resend{font-size:.82rem;color:var(--muted);margin-top:16px}
+  .resend a{color:var(--teal-d);font-weight:700;cursor:pointer}
+
+  footer{padding:20px 0 28px;text-align:center;font-size:.75rem;color:var(--muted);font-family:'Courier New',monospace}
+  footer a{color:var(--muted)}
+
+  @media(max-width:560px){.card-body{padding:28px 20px 30px}h1{font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+  <header>
+    <a href="https://deutschoderwas.de" class="brand">
+      <span class="logo">deutsch<b>oder</b>was · Sprechclub</span>
+    </a>
+  </header>
+
+  <main>
+    <div class="card">
+      <div class="flag"></div>
+      <div class="card-body">
+
+        <!-- ====== ZUSTAND 1: Formular ====== -->
+        <div id="form-state">
+          <div class="kicker">Gratis-Übungsblatt · A2–B2</div>
+          <div class="doc-icon">📄</div>
+          <h1>20 Alltagswörter, <span>die jeder benutzt</span></h1>
+          <p class="sub-en">The little words your textbook forgot — get them free.</p>
+          <p class="lead">
+            Die kleinen Wörter, die im Lehrbuch fehlen, aber in jedem echten Gespräch vorkommen.
+            Trag deine E-Mail ein und das interaktive Übungsblatt öffnet sich <strong>sofort</strong> —
+            mit Beispielen, Flashcards und Übungen.
+          </p>
+
+          <ul class="perks">
+            <li><span>📖</span> 20 Wörter erklärt</li>
+            <li><span>🃏</span> Flashcards</li>
+            <li><span>✍️</span> Übungen + Lösungen</li>
+            <li><span>🆓</span> 100 % kostenlos</li>
+          </ul>
+
+          <div id="error" class="error-msg"></div>
+
+          <form id="pdf-form" novalidate>
+            <label class="flab" for="EMAIL">Deine E-Mail-Adresse</label>
+            <input type="email" id="EMAIL" name="EMAIL" placeholder="name@beispiel.de" required autocomplete="email" />
+
+            <div class="hp" aria-hidden="true">
+              <input type="text" name="email_address_check" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <label class="consent">
+              <input type="checkbox" id="consent" required />
+              <span>Ja, ich möchte das Übungsblatt und kostenlose Deutsch-Tipps von deutschoderwas erhalten.
+              Abmeldung jederzeit möglich. Mehr in der
+              <a href="https://deutschoderwas.de/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a>.</span>
+            </label>
+
+            <button type="submit" class="btn" id="submitBtn">📥 Übungsblatt jetzt sichern</button>
+            <p class="form-note">Kostenlos &amp; jederzeit abbestellbar. Kein Spam, versprochen.</p>
+          </form>
+        </div>
+
+        <!-- ====== ZUSTAND 2: Erfolg ====== -->
+        <div id="success-state" class="success">
+          <div class="check">✓</div>
+          <h1>Geschafft! 🎉</h1>
+          <p class="sub-en">You're in — here's your worksheet.</p>
+          <p class="lead">
+            Danke fürs Eintragen! Dein Übungsblatt ist startklar. Klick auf den Button —
+            es öffnet sich in einem neuen Tab. Und schau gern in dein Postfach für meine nächsten Tipps.
+          </p>
+          <a href="#" id="downloadLink" class="dl-btn" target="_blank" rel="noopener">📄 Übungsblatt öffnen</a>
+          <p class="resend">Öffnet sich nichts? <a id="manualDl">Hier nochmal klicken</a></p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      deutschoderwas · Julia Karackov ·
+      <a href="https://deutschoderwas.de/impressum" target="_blank" rel="noopener">Impressum</a> ·
+      <a href="https://deutschoderwas.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+    </div>
+  </footer>
+
+<script>
+/* ================================================================
+   ⚙️  EINSTELLUNGEN — die ZWEI Werte hier anpassen:
+   ================================================================ */
+
+   // 1) Die "action"-URL deines Brevo-Formulars
+   //    (in Brevo → Formular → Teilen/Embed; im Code steht
+   //     action="https://xxxx.sibforms.com/serve/MUIE....")
+   const BREVO_FORM_URL = "https://77660bde.sibforms.com/serve/MUIFAC-H4lvcy-aNrI5m0vbtuA9jEXVKztHwK4dHBr_t0FBXPbfn62WPptgc7qCyNhYy0qUhr6BybM785e3m1Zte60ZxiETjsdlu3avaMCaE2omESZjojGJ0RVwCU_kcd_hWXFGqKahTNQhCHR7S77bjw406u1oj2F1nzHSdVGbBFdMW79E6JKutr_i8FU5geiT4jRuv1DvruKLy";
+
+   // 2) Die Datei, die sich nach der Anmeldung öffnet.
+   //    (im selben Ordner wie diese Seite ablegen)
+   const DOKUMENT_DATEI = "Uebungsblatt_20_Alltagswoerter.html";
+
+/* ================================================================
+   Ab hier nichts mehr ändern.
+   ================================================================ */
+
+const form         = document.getElementById('pdf-form');
+const formState    = document.getElementById('form-state');
+const successState = document.getElementById('success-state');
+const errorBox     = document.getElementById('error');
+const submitBtn    = document.getElementById('submitBtn');
+const dlLink       = document.getElementById('downloadLink');
+const manualDl     = document.getElementById('manualDl');
+
+dlLink.setAttribute('href', DOKUMENT_DATEI);
+manualDl.onclick = function(){ window.open(DOKUMENT_DATEI, '_blank'); };
+
+function zeigeDownload(autoOpen){
+  formState.style.display = 'none';
+  successState.style.display = 'block';
+  successState.scrollIntoView({behavior:'smooth', block:'center'});
+  if(autoOpen){ try{ window.open(DOKUMENT_DATEI, '_blank'); }catch(e){} }
+}
+
+try{ if(localStorage.getItem('dow_doc_done') === '1'){ zeigeDownload(false); } }catch(e){}
+
+/* Vorschau:  ...?vorschau=1  */
+if(new URLSearchParams(location.search).get('vorschau') === '1'){ zeigeDownload(false); }
+
+form.addEventListener('submit', async function(e){
+  e.preventDefault();
+  errorBox.style.display = 'none';
+
+  const email   = document.getElementById('EMAIL').value.trim();
+  const consent = document.getElementById('consent').checked;
+  const honey   = form.querySelector('[name=email_address_check]').value;
+
+  if(honey){ return; }
+  if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+    errorBox.textContent = "Bitte gib eine gültige E-Mail-Adresse ein.";
+    errorBox.style.display = 'block'; return;
+  }
+  if(!consent){
+    errorBox.textContent = "Bitte setz das Häkchen, damit ich dir das Übungsblatt schicken darf.";
+    errorBox.style.display = 'block'; return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Wird gesendet…";
+
+  try{
+    if(BREVO_FORM_URL && BREVO_FORM_URL.indexOf('sibforms.com') !== -1){
+      const data = new FormData();
+      data.append('EMAIL', email);
+      data.append('email_address_check', '');
+      data.append('locale', 'de');
+      data.append('html_type', 'simple');
+      await fetch(BREVO_FORM_URL, { method:'POST', mode:'no-cors', body:data });
+    }
+    try{ localStorage.setItem('dow_doc_done','1'); }catch(e){}
+    zeigeDownload(true);
+  }catch(err){
+    try{ localStorage.setItem('dow_doc_done','1'); }catch(e){}
+    zeigeDownload(true);
+  }
+});
+</script>
+</body>
+</html>
