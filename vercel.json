@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/amanda", "destination": "/amanda_landing.html" },
     { "source": "/mini-kurs", "destination": "/mini-kurs.html" },
-    { "source": "/amanda-plus", "destination": "/amanda-plus.html" }
+    { "source": "/amanda-plus", "destination": "/amanda-plus.html" },
+    { "source": "/uebungsblatt", "destination": "/uebungsblatt-anmeldung.html" }
   ]
 }
