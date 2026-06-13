@@ -361,8 +361,8 @@ footer a:hover{color:var(--accent)}
       <div class="offer-tier">Zum Reinschnuppern</div>
       <div class="offer-price">0 €<span>für immer</span></div>
       <ul class="offer-features">
-        <li>5 Minuten Amanda täglich</li>
-        <li>Frei sprechen üben</li>
+        <li>1 Minute Amanda gratis testen</li>
+        <li>Hör ihre Stimme, sprich los</li>
         <li>Kein Risiko, kein Abo</li>
       </ul>
       <a href="#sprechen" class="btn btn-ghost">Kostenlos testen</a>
@@ -559,25 +559,7 @@ footer a:hover{color:var(--accent)}
 <elevenlabs-convai agent-id="agent_8401kt4vq157espa2msk6c448s5x"></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
-<!-- FREE-PLAN LIMIT MODAL — wird angezeigt sobald 5 Min/Tag verbraucht -->
-<div id="limitOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:24px;animation:fade .3s ease">
-  <div style="background:#fff;max-width:480px;width:100%;border-radius:28px;padding:40px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative">
-    <div style="font-size:60px;margin-bottom:14px">⏰</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:10px;line-height:1.15">Deine 5 Minuten<br/>sind heute aufgebraucht.</h2>
-    <p style="color:#6B7280;font-size:16px;line-height:1.55;margin-bottom:24px">Komm morgen wieder — oder upgrade auf <strong style="color:#DD0000">Sprechen-Plan</strong> für unbegrenzte Gespräche mit Amanda.</p>
-    <div style="display:flex;gap:10px;flex-direction:column">
-      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda-limit&utm_campaign=upgrade" target="_blank" rel="noopener" style="background:#DD0000;color:#fff;padding:14px 24px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;display:block">🚀 Auf Sprechen-Plan upgraden — 9,99 €/Monat</a>
-      <button onclick="document.getElementById('limitOverlay').style.display='none'" style="background:#fff;border:1.5px solid #F0E5D8;color:#1A1A1A;padding:12px 24px;border-radius:50px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit">Morgen wiederkommen</button>
-    </div>
-    <p style="font-size:12px;color:#9CA3AF;margin-top:18px">Heutiges Limit wird um Mitternacht zurückgesetzt.</p>
-  </div>
-</div>
-
-<!-- USAGE-COUNTER — zeigt verbleibende Free-Zeit unten links -->
-<div id="usageCounter" style="position:fixed;bottom:22px;left:22px;background:#fff;border:1.5px solid #F0E5D8;border-radius:30px;padding:9px 16px;font-size:13px;font-weight:700;color:#1A1A1A;box-shadow:0 10px 30px rgba(0,0,0,.1);z-index:150;display:none;align-items:center;gap:8px">
-  <span style="font-size:16px">⏱️</span>
-  <span><span id="usageLeft">5:00</span> heute frei</span>
-</div>
+<!-- (Kein Free-Limit auf der Plus-Seite — hier ist Amanda unbegrenzt.) -->
 
 <script>
 /* ============= MOBILE NAV ============= */
