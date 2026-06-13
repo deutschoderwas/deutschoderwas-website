@@ -346,8 +346,8 @@ footer a:hover{color:var(--accent)}
       <div class="offer-tier">Zum Reinschnuppern</div>
       <div class="offer-price">0 €<span>für immer</span></div>
       <ul class="offer-features">
-        <li>5 Minuten Amanda täglich</li>
-        <li>Frei sprechen üben</li>
+        <li>1 Minute Amanda gratis testen</li>
+        <li>Hör ihre Stimme, sprich los</li>
         <li>Kein Risiko, kein Abo</li>
       </ul>
       <a href="#sprechen" class="btn btn-ghost">Kostenlos testen</a>
@@ -540,28 +540,70 @@ footer a:hover{color:var(--accent)}
   </div>
 </footer>
 
-<!-- AMANDA WIDGET -->
-<elevenlabs-convai agent-id="agent_8401kt4vq157espa2msk6c448s5x"></elevenlabs-convai>
+<!-- AMANDA WIDGET — Mobile: nicht fullscreen, kompakter Footprint -->
+<elevenlabs-convai
+  agent-id="agent_8401kt4vq157espa2msk6c448s5x"
+  expandable="never"
+  variant="full"
+  avatar-orb-color-1="#DD0000"
+  avatar-orb-color-2="#FFCE00"
+  action-text="🎤 Mit Amanda sprechen"
+  start-call-text="Gespräch starten"
+  end-call-text="Gespräch beenden"
+  listening-text="Amanda hört zu …"
+  speaking-text="Amanda spricht …"
+></elevenlabs-convai>
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
-<!-- FREE-PLAN LIMIT MODAL — wird angezeigt sobald 5 Min/Tag verbraucht -->
+<style>
+/* ====== AMANDA WIDGET — MOBILE FIX ======
+   Standard-Verhalten von ElevenLabs auf Mobile = Fullscreen-Overlay (weiße Wand).
+   Wir zwingen das Widget in einen kompakten Footprint und verhindern Fullscreen. */
+elevenlabs-convai{
+  position:fixed !important;
+  bottom:18px !important;
+  right:18px !important;
+  z-index:998 !important;
+}
+@media(max-width:768px){
+  elevenlabs-convai{
+    bottom:14px !important;
+    right:14px !important;
+    left:auto !important;
+    top:auto !important;
+    width:auto !important;
+    height:auto !important;
+    max-width:calc(100vw - 28px) !important;
+    max-height:75vh !important;
+  }
+  /* Shadow-DOM-Inhalt zwingen, sich an Container zu halten */
+  elevenlabs-convai::part(root),
+  elevenlabs-convai::part(container){
+    max-width:calc(100vw - 28px) !important;
+    max-height:75vh !important;
+    border-radius:24px !important;
+  }
+}
+</style>
+
+<!-- FREE-KOSTPROBE LIMIT MODAL — erscheint sofort nach 1 Gratis-Minute -->
 <div id="limitOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:24px;animation:fade .3s ease">
   <div style="background:#fff;max-width:480px;width:100%;border-radius:28px;padding:40px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative">
     <div style="font-size:60px;margin-bottom:14px">⏰</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:10px;line-height:1.15">Deine 5 Minuten<br/>sind heute aufgebraucht.</h2>
-    <p style="color:#6B7280;font-size:16px;line-height:1.55;margin-bottom:24px">Komm morgen wieder — oder upgrade auf <strong style="color:#DD0000">Sprechen-Plan</strong> für unbegrenzte Gespräche mit Amanda.</p>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:10px;line-height:1.15">Möchtest du weiter<br/>mit Amanda sprechen?</h2>
+    <p style="color:#6B7280;font-size:16px;line-height:1.55;margin-bottom:24px">Deine kostenlose Minute ist um. Im <strong style="color:#DD0000">Sprechen-Plan</strong> sprichst du <strong>unbegrenzt</strong> mit Amanda — 24/7, jederzeit kündbar.</p>
     <div style="display:flex;gap:10px;flex-direction:column">
-      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda-limit&utm_campaign=upgrade" target="_blank" rel="noopener" style="background:#DD0000;color:#fff;padding:14px 24px;border-radius:50px;font-weight:700;text-decoration:none;font-size:15px;display:block">🚀 Auf Sprechen-Plan upgraden — 9,99 €/Monat</a>
-      <button onclick="document.getElementById('limitOverlay').style.display='none'" style="background:#fff;border:1.5px solid #F0E5D8;color:#1A1A1A;padding:12px 24px;border-radius:50px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit">Morgen wiederkommen</button>
+      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda-limit&utm_campaign=upgrade" target="_blank" rel="noopener" style="background:#DD0000;color:#fff;padding:16px 24px;border-radius:50px;font-weight:700;text-decoration:none;font-size:16px;display:block">🚀 Jetzt unbegrenzt mit Amanda sprechen — 9,99 €/Monat</a>
+      <button onclick="document.getElementById('limitOverlay').style.display='none'" style="background:#fff;border:1.5px solid #F0E5D8;color:#1A1A1A;padding:12px 24px;border-radius:50px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit">Vielleicht später</button>
     </div>
-    <p style="font-size:12px;color:#9CA3AF;margin-top:18px">Heutiges Limit wird um Mitternacht zurückgesetzt.</p>
+    <p style="font-size:12px;color:#9CA3AF;margin-top:18px">Sofort freigeschaltet nach dem Kauf · monatlich kündbar</p>
   </div>
 </div>
 
 <!-- USAGE-COUNTER — zeigt verbleibende Free-Zeit unten links -->
 <div id="usageCounter" style="position:fixed;bottom:22px;left:22px;background:#fff;border:1.5px solid #F0E5D8;border-radius:30px;padding:9px 16px;font-size:13px;font-weight:700;color:#1A1A1A;box-shadow:0 10px 30px rgba(0,0,0,.1);z-index:150;display:none;align-items:center;gap:8px">
   <span style="font-size:16px">⏱️</span>
-  <span><span id="usageLeft">5:00</span> heute frei</span>
+  <span><span id="usageLeft">1:00</span> gratis</span>
 </div>
 
 <script>
@@ -588,12 +630,12 @@ if(nlForm){
   });
 }
 
-/* ============= FREE-PLAN 5-MIN/TAG-LIMIT =============
-   Trackt Sprechzeit pro Tag im localStorage. Pro Tag max. 300 Sek (= 5 Min).
-   Bei Erreichen: Widget wird ausgeblendet + Upgrade-Modal eingeblendet.
-   Mitternacht-Reset durch tagesbasierten Storage-Key. */
-const LIMIT_SEC = 5 * 60;
-function todayKey(){return 'amanda_usage_'+new Date().toISOString().slice(0,10)}
+/* ============= FREE-KOSTPROBE: 1 MINUTE EINMALIG =============
+   Trackt Sprechzeit im localStorage. Einmalige Gratis-Minute pro Browser.
+   Bei Erreichen: Widget aus + Upgrade-Modal sofort → Bezahlung.
+   Kein Tages-Reset mehr (fester Key = einmalig). */
+const LIMIT_SEC = 1 * 60;
+function todayKey(){return 'amanda_free_used'}
 function getUsage(){return parseInt(localStorage.getItem(todayKey())||'0',10)}
 function setUsage(v){localStorage.setItem(todayKey(),v)}
 function fmt(sec){const m=Math.floor(sec/60),s=sec%60;return m+':'+(s<10?'0':'')+s}
@@ -612,8 +654,12 @@ function updateCounter(){
   if(left <= 0) blockWidget();
 }
 function blockWidget(){
+  // Widget komplett aus dem DOM entfernen → Gespräch wird sofort beendet,
+  // damit keine weiteren ElevenLabs-Minuten verbraucht werden.
   const w = document.querySelector('elevenlabs-convai');
-  if(w) w.style.display='none';
+  if(w) w.remove();
+  if(tickInterval){clearInterval(tickInterval);tickInterval=null}
+  callStart = null;
   overlayEl.style.display='flex';
 }
 function startTick(){
@@ -680,7 +726,7 @@ window.addEventListener('load', ()=>{
 });
 
 /* Debug helper (in Konsole verfügbar) — Tageszählung zurücksetzen:
-   localStorage.removeItem('amanda_usage_'+new Date().toISOString().slice(0,10));location.reload();
+   localStorage.removeItem('amanda_free_used');location.reload();
 */
 </script>
 
