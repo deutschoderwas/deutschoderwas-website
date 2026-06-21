@@ -556,33 +556,13 @@ footer a:hover{color:var(--accent)}
 <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 <style>
-/* ====== AMANDA WIDGET — MOBILE FIX ======
-   Standard-Verhalten von ElevenLabs auf Mobile = Fullscreen-Overlay (weiße Wand).
-   Wir zwingen das Widget in einen kompakten Footprint und verhindern Fullscreen. */
+/* ====== AMANDA WIDGET ======
+   WICHTIG: Das ElevenLabs-Widget bringt sein eigenes responsives Layout mit.
+   Frühere Overrides (width/height:auto, max-width/-height auf den Host) haben den
+   Host auf 0x0 kollabieren lassen -> Button auf dem Handy unsichtbar.
+   Daher NUR die Position anpassen, NIEMALS Größe/Maße des Hosts überschreiben. */
 elevenlabs-convai{
-  position:fixed !important;
-  bottom:18px !important;
-  right:18px !important;
   z-index:998 !important;
-}
-@media(max-width:768px){
-  elevenlabs-convai{
-    bottom:14px !important;
-    right:14px !important;
-    left:auto !important;
-    top:auto !important;
-    width:auto !important;
-    height:auto !important;
-    max-width:calc(100vw - 28px) !important;
-    max-height:75vh !important;
-  }
-  /* Shadow-DOM-Inhalt zwingen, sich an Container zu halten */
-  elevenlabs-convai::part(root),
-  elevenlabs-convai::part(container){
-    max-width:calc(100vw - 28px) !important;
-    max-height:75vh !important;
-    border-radius:24px !important;
-  }
 }
 </style>
 
