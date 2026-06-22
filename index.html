@@ -373,20 +373,60 @@ footer a:hover{color:var(--accent)}
         <li><span class="em">📋</span> Cheatsheet inklusive</li>
         <li><span class="em">📱</span> Interaktive App</li>
       </ul>
-      <div class="minikurs-cta">
-        <a href="/mini-kurs" class="btn btn-primary">🚀 Mini-Kurs jetzt starten</a>
-        <a href="/mini-kurs" class="btn btn-ghost">Per E-Mail erhalten</a>
+      <form class="minikurs-form" id="mkForm"
+            action="https://77660bde.sibforms.com/serve/MUIFAC-H4lvcy-aNrI5m0vbtuA9jEXVKztHwK4dHBr_t0FBXPbfn62WPptgc7qCyNhYy0qUhr6BybM785e3m1Zte60ZxiETjsdlu3avaMCaE2omESZjojGJ0RVwCU_kcd_hWXFGqKahTNQhCHR7S77bjw406u1oj2F1nzHSdVGbBFdMW79E6JKutr_i8FU5geiT4jRuv1DvruKLy"
+            method="POST" target="mkTarget">
+        <input type="email" name="EMAIL" placeholder="deine@email.de" required autocomplete="email">
+        <input type="hidden" name="locale" value="de">
+        <input type="hidden" name="html_type" value="simple">
+        <button type="submit" class="btn btn-primary">🚀 Mini-Kurs jetzt starten →</button>
+      </form>
+      <div class="minikurs-note" id="mkNote">Komplett kostenlos · E-Mail eintragen & sofort starten · Jederzeit abbestellbar.</div>
+      <div class="minikurs-success" id="mkSuccess">
+        🎉 Dein Zugang ist freigeschaltet! Du wirst gleich weitergeleitet …<br>
+        <a href="https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/">📘 Mini-Kurs jetzt öffnen</a>
       </div>
+      <iframe name="mkTarget" style="display:none" title="Brevo"></iframe>
     </div>
   </div>
 </section>
 
+<script>
+/* Minikurs: E-Mail geht im Hintergrund an Brevo (verstecktes iframe),
+   danach wird der Minikurs sofort geöffnet. */
+(function(){
+  var f=document.getElementById('mkForm');
+  if(!f)return;
+  var MK='https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/';
+  f.addEventListener('submit',function(){
+    if(!f.checkValidity())return; // bei ungültiger E-Mail nichts ausblenden
+    setTimeout(function(){
+      f.style.display='none';
+      var n=document.getElementById('mkNote'); if(n)n.style.display='none';
+      var ok=document.getElementById('mkSuccess'); if(ok){ok.classList.add('show');ok.scrollIntoView({behavior:'smooth',block:'center'});}
+    },200);
+    setTimeout(function(){ window.location.href=MK; },1100);
+  });
+})();
+</script>
+
 <style>
+.minikurs-form{display:flex;gap:10px;flex-wrap:wrap;max-width:520px;margin-bottom:12px}
+.minikurs-form input[type=email]{flex:1;min-width:220px;border:2px solid rgba(26,26,26,.15);border-radius:50px;padding:14px 20px;font-size:15px;font-family:inherit;color:var(--secondary);outline:none;background:#fff}
+.minikurs-form input[type=email]:focus{border-color:var(--primary)}
+.minikurs-form .btn{white-space:nowrap}
+.minikurs-note{font-size:13px;color:rgba(26,26,26,.6);max-width:520px}
+.minikurs-success{display:none;background:rgba(45,212,191,.16);border:1.5px solid #2DD4BF;border-radius:16px;padding:18px 22px;margin-top:6px;max-width:520px;font-weight:600;color:var(--secondary);line-height:1.5}
+.minikurs-success.show{display:block}
+.minikurs-success a{display:inline-block;margin-top:10px;background:var(--secondary);color:#fff;padding:11px 22px;border-radius:50px;text-decoration:none;font-weight:700}
+.minikurs-success a:hover{background:var(--primary)}
 @media(max-width:980px){
   .minikurs-grid{grid-template-columns:1fr;text-align:center;gap:30px}
   .minikurs-photo img{max-width:280px}
   .minikurs-feats{grid-template-columns:1fr;text-align:left;max-width:340px;margin-left:auto;margin-right:auto}
   .minikurs-cta{justify-content:center}
+  .minikurs-form{margin-left:auto;margin-right:auto;justify-content:center}
+  .minikurs-note,.minikurs-success{margin-left:auto;margin-right:auto}
 }
 </style>
 
@@ -850,7 +890,7 @@ footer a:hover{color:var(--accent)}
         <li><a href="https://8-wochen-sprech-challenge.deutschoderwas-lernen.de/" target="_blank" rel="noopener">8-Wochen-Challenge</a></li>
         <li><a href="#amanda">KI-Tutorin Amanda</a></li>
         <li><a href="https://stan.store/deutschoderwas" target="_blank" rel="noopener">Digitale Kurse</a></li>
-        <li><a href="https://stan.store/deutschoderwas/p/100-fehler-der-deutschlerner" target="_blank" rel="noopener">Mini-Kurs (gratis)</a></li>
+        <li><a href="#minikurs">Mini-Kurs (gratis)</a></li>
       </ul>
     </div>
     <div>
