@@ -490,7 +490,7 @@ footer a:hover{color:var(--accent)}
     <button type="submit" class="btn btn-primary">Mini-Kurs sichern →</button>
   </form>
   <div class="nl-note" id="nlNote">Kostenlos &amp; jederzeit abbestellbar. Mit der Anmeldung stimmst du dem Erhalt des Mini-Kurs-Zugangs und der E-Mail-Tipps zu.</div>
-  <div class="nl-success" id="nlSuccess">🎉 Yes! Check deine Mails — dein Zugang zum Mini-Kurs ist unterwegs.</div>
+  <div class="nl-success" id="nlSuccess">🎉 Zugang freigeschaltet! Du wirst gleich zum Mini-Kurs weitergeleitet … <a href="https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/" style="color:#DD0000;font-weight:800">📘 Jetzt öffnen</a></div>
   <iframe name="brevoTarget" style="display:none" title="Brevo"></iframe>
   <div class="cta-row">
     <a href="#sprechen" class="btn btn-primary">🎤 Jetzt mit Amanda sprechen</a>
@@ -512,7 +512,7 @@ footer a:hover{color:var(--accent)}
       <h4>Angebote</h4>
       <ul>
         <li><a href="https://stan.store/deutschoderwas" target="_blank" rel="noopener">Digitale Kurse</a></li>
-        <li><a href="https://stan.store/deutschoderwas/p/100-fehler-der-deutschlerner" target="_blank" rel="noopener">Minikurs</a></li>
+        <li><a href="#newsletter">Minikurs (gratis)</a></li>
         <li><a href="https://www.deutschoderwas-club.de" target="_blank" rel="noopener">Sprechclub</a></li>
         <li><a href="#sprechen">KI-Tutorin Amanda</a></li>
       </ul>
@@ -566,18 +566,15 @@ elevenlabs-convai{
 }
 </style>
 
-<!-- FREE-KOSTPROBE LIMIT MODAL — erscheint sofort nach 1 Gratis-Minute -->
-<div id="limitOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;padding:24px;animation:fade .3s ease">
-  <div style="background:#fff;max-width:480px;width:100%;border-radius:28px;padding:40px 36px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.4);position:relative">
-    <div style="font-size:60px;margin-bottom:14px">⏰</div>
-    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#1A1A1A;margin-bottom:10px;line-height:1.15">Möchtest du weiter<br/>mit Amanda sprechen?</h2>
-    <p style="color:#6B7280;font-size:16px;line-height:1.55;margin-bottom:24px">Deine kostenlose Minute ist um. Im <strong style="color:#DD0000">Sprechen-Plan</strong> sprichst du <strong>unbegrenzt</strong> mit Amanda — 24/7, jederzeit kündbar.</p>
-    <div style="display:flex;gap:10px;flex-direction:column">
-      <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda-limit&utm_campaign=upgrade" target="_blank" rel="noopener" style="background:#DD0000;color:#fff;padding:16px 24px;border-radius:50px;font-weight:700;text-decoration:none;font-size:16px;display:block">🚀 Jetzt unbegrenzt mit Amanda sprechen — 9,99 €/Monat</a>
-      <button onclick="document.getElementById('limitOverlay').style.display='none'" style="background:#fff;border:1.5px solid #F0E5D8;color:#1A1A1A;padding:12px 24px;border-radius:50px;font-weight:600;cursor:pointer;font-size:14px;font-family:inherit">Vielleicht später</button>
-    </div>
-    <p style="font-size:12px;color:#9CA3AF;margin-top:18px">Sofort freigeschaltet nach dem Kauf · monatlich kündbar</p>
+<!-- FREE-KOSTPROBE LIMIT — kompakte, NICHT blockierende Karte unten (verdeckt die Seite nicht) -->
+<div id="limitOverlay" style="display:none;position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(360px,calc(100vw - 24px));background:#fff;border:1.5px solid #F0E5D8;border-radius:20px;padding:15px 18px 14px;box-shadow:0 18px 50px rgba(0,0,0,.22);z-index:9999;animation:fade .3s ease">
+  <button onclick="document.getElementById('limitOverlay').style.display='none'" aria-label="Schließen" style="position:absolute;top:7px;right:11px;background:none;border:none;font-size:20px;line-height:1;color:#9CA3AF;cursor:pointer;font-family:inherit">×</button>
+  <div style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+    <span style="font-size:24px">⏰</span>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:800;color:#1A1A1A;margin:0;line-height:1.2">Gratis-Minute ist um</h2>
   </div>
+  <p style="color:#6B7280;font-size:13px;line-height:1.45;margin:0 0 11px">Im <strong style="color:#DD0000">Sprechen-Plan</strong> sprichst du <strong>unbegrenzt</strong> mit Amanda — jederzeit kündbar.</p>
+  <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=amanda-limit&utm_campaign=upgrade" target="_blank" rel="noopener" style="background:#DD0000;color:#fff;padding:11px 16px;border-radius:50px;font-weight:700;text-decoration:none;font-size:14px;display:block;text-align:center">🚀 Unbegrenzt sprechen — 9,99 €/Monat</a>
 </div>
 
 <!-- USAGE-COUNTER — zeigt verbleibende Free-Zeit unten links -->
@@ -607,6 +604,7 @@ if(nlForm){
       ok.classList.add('show');
       ok.scrollIntoView({behavior:'smooth',block:'center'});
     },250);
+    setTimeout(()=>{ window.location.href='https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/'; },1100);
   });
 }
 
@@ -640,7 +638,9 @@ function blockWidget(){
   if(w) w.remove();
   if(tickInterval){clearInterval(tickInterval);tickInterval=null}
   callStart = null;
-  overlayEl.style.display='flex';
+  // kleinen Zähler ausblenden, kompakte Upgrade-Karte zeigen (blockiert die Seite NICHT)
+  if(counterEl) counterEl.style.display='none';
+  overlayEl.style.display='block';
 }
 function startTick(){
   if(tickInterval) return;
@@ -713,7 +713,7 @@ window.addEventListener('load', ()=>{
 <style>
 @keyframes fade{from{opacity:0}to{opacity:1}}
 #limitOverlay{display:none}
-#limitOverlay[style*="flex"]{display:flex!important}
+#limitOverlay[style*="display:block"]{display:block!important}
 @media(max-width:560px){
   #usageCounter{bottom:auto;top:80px;left:50%;transform:translateX(-50%)}
 }
