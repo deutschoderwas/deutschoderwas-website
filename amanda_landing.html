@@ -715,7 +715,9 @@ window.addEventListener('load', ()=>{
 #limitOverlay{display:none}
 #limitOverlay[style*="display:block"]{display:block!important}
 @media(max-width:560px){
-  #usageCounter{bottom:auto;top:80px;left:50%;transform:translateX(-50%)}
+  /* WICHTIG: !important, da der Zähler Inline-Styles (bottom/left) hat, die sonst
+     zusammen mit dieser Regel kollidieren (top+bottom gleichzeitig = riesiges weißes Feld). */
+  #usageCounter{top:auto!important;bottom:14px!important;left:14px!important;right:auto!important;transform:none!important;white-space:nowrap}
 }
 </style>
 </body>
