@@ -337,7 +337,7 @@ footer a:hover{color:var(--accent)}
       <p class="subtitle-en serif-accent">Learn to actually speak German — with fun and ease.</p>
       <p class="lead">Als erfahrene DaZ-Lehrerin und Content Creatorin gebe ich dir strukturierte digitale Kurse, einen interaktiven Live-Sprechclub und mit <strong>Amanda</strong> deine persönliche KI-Tutorin – damit du echtes, alltagsnahes Deutsch sprichst.</p>
       <div class="hero-cta-row">
-        <a href="#angebote" class="btn btn-primary">Kurse entdecken</a>
+        <a href="https://www.deutschoderwas-club.de" class="btn btn-primary" target="_blank" rel="noopener">Kurse entdecken</a>
         <a href="#amanda" class="btn btn-ghost">🤖 Amanda kennenlernen</a>
       </div>
       <div class="hero-stats">
@@ -383,8 +383,7 @@ footer a:hover{color:var(--accent)}
       </form>
       <div class="minikurs-note" id="mkNote">Komplett kostenlos · E-Mail eintragen & sofort starten · Jederzeit abbestellbar.</div>
       <div class="minikurs-success" id="mkSuccess">
-        🎉 Dein Zugang ist freigeschaltet! Du wirst gleich weitergeleitet …<br>
-        <a href="https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/">📘 Mini-Kurs jetzt öffnen</a>
+        📧 Fast geschafft! Wir haben dir eine E-Mail geschickt. <b>Bestätige den Link darin</b> — danach bekommst du sofort deinen kompletten Mini-Kurs. (Schau auch im Spam-Ordner nach.)
       </div>
       <iframe name="mkTarget" style="display:none" title="Brevo"></iframe>
     </div>
@@ -392,12 +391,12 @@ footer a:hover{color:var(--accent)}
 </section>
 
 <script>
-/* Minikurs: E-Mail geht im Hintergrund an Brevo (verstecktes iframe),
-   danach wird der Minikurs sofort geöffnet. */
+/* Minikurs: E-Mail geht im Hintergrund an Brevo (verstecktes iframe).
+   KEINE direkte Weiterleitung zum Kurs — der Zugang kommt erst NACH
+   der E-Mail-Bestätigung (Double-Opt-in-Redirect in Brevo zum Kurs). */
 (function(){
   var f=document.getElementById('mkForm');
   if(!f)return;
-  var MK='https://100-fehler-derdeutschlerner.deutschoderwas-lernen.de/';
   f.addEventListener('submit',function(){
     if(!f.checkValidity())return; // bei ungültiger E-Mail nichts ausblenden
     setTimeout(function(){
@@ -405,7 +404,6 @@ footer a:hover{color:var(--accent)}
       var n=document.getElementById('mkNote'); if(n)n.style.display='none';
       var ok=document.getElementById('mkSuccess'); if(ok){ok.classList.add('show');ok.scrollIntoView({behavior:'smooth',block:'center'});}
     },200);
-    setTimeout(function(){ window.location.href=MK; },1100);
   });
 })();
 </script>
