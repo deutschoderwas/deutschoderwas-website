@@ -317,11 +317,12 @@ footer a:hover{color:var(--accent)}
   <div class="nav-menu" id="navmenu">
     <a href="#minikurs" class="link">Mini-Kurs</a>
     <a href="#niveautest" class="link">Niveau-Test</a>
-    <a href="#amanda" class="link">Amanda</a>
+    <a href="#kurse" class="link">Kurse</a>
     <a href="#sprechclub" class="link">Sprechclub</a>
     <a href="#challenge" class="link">Challenge</a>
     <a href="#wie" class="link">So geht's</a>
     <a href="#faq" class="link">FAQ</a>
+    <a href="#lehrer" class="link">Lehrer werden</a>
     <a href="https://www.deutschoderwas-club.de" class="nav-cta" target="_blank" rel="noopener">🎙️ Zum Club</a>
   </div>
   <button class="burger" id="burger" aria-label="Menü">☰</button>
@@ -335,10 +336,10 @@ footer a:hover{color:var(--accent)}
       <div class="hero-tag">DaZ-Lehrerin · 10.000+ Lernende weltweit</div>
       <h1>Endlich <span class="highlight">flüssig Deutsch</span> sprechen.</h1>
       <p class="subtitle-en serif-accent">Learn to actually speak German — with fun and ease.</p>
-      <p class="lead">Als erfahrene DaZ-Lehrerin und Content Creatorin gebe ich dir strukturierte digitale Kurse, einen interaktiven Live-Sprechclub und mit <strong>Amanda</strong> deine persönliche KI-Tutorin – damit du echtes, alltagsnahes Deutsch sprichst.</p>
+      <p class="lead">Als erfahrene DaZ-Lehrerin und Content Creatorin gebe ich dir <strong>strukturierte digitale Kurse für Beruf &amp; Alltag</strong> und einen interaktiven Live-Sprechclub – damit du echtes, alltagsnahes Deutsch endlich <strong>frei sprichst</strong>.</p>
       <div class="hero-cta-row">
-        <a href="https://www.deutschoderwas-club.de" class="btn btn-primary" target="_blank" rel="noopener">Kurse entdecken</a>
-        <a href="#amanda" class="btn btn-ghost">🤖 Amanda kennenlernen</a>
+        <a href="#kurse" class="btn btn-primary">Kurse entdecken</a>
+        <a href="#sprechclub" class="btn btn-ghost">🎙️ Live-Sprechclub</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stars">★★★★★</span><small>Geliebt in 20+ Ländern</small></div>
@@ -354,6 +355,76 @@ footer a:hover{color:var(--accent)}
     </div>
   </div>
 </header>
+
+<!-- KURSE (Herzstück) -->
+<style>
+.kurse{padding:100px 24px;background:#fff}
+.kurse-grid{grid-template-columns:repeat(2,1fr);max-width:920px}
+.kurse .offer-card{padding-top:46px}
+.kurs-badge{position:absolute;top:18px;right:18px;background:var(--bg);color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.5px;padding:5px 11px;border-radius:20px}
+.kurse-note{text-align:center;margin-top:34px;color:var(--text-soft);font-size:15px}
+.kurse-note a{color:var(--primary);font-weight:700;text-decoration:none}
+@media(max-width:860px){.kurse-grid{grid-template-columns:1fr;max-width:440px}}
+</style>
+<section class="kurse" id="kurse">
+  <div class="section-head">
+    <span class="section-tag">Digitale Kurse · In Vorbereitung</span>
+    <h2>Kurse, die dich <span class="highlight">wirklich weiterbringen</span></h2>
+    <p>Strukturierte Deutschkurse für konkrete Ziele — Beruf, Alltag und Prüfung. Sie entstehen gerade Schritt für Schritt. Das steht bald für dich bereit:</p>
+  </div>
+  <div class="offer-grid kurse-grid">
+
+    <div class="offer-card">
+      <span class="kurs-badge">🔧 In Vorbereitung</span>
+      <div class="offer-emoji">🩺</div>
+      <h3>Pflege-Deutsch</h3>
+      <div class="offer-tier">Für Pflegekräfte · B1–B2</div>
+      <ul class="offer-features">
+        <li>Fachsprache für Station &amp; Pflegealltag</li>
+        <li>Sicher sprechen mit Patienten &amp; Kollegen</li>
+        <li>Übergabe, Dokumentation &amp; Telefonate</li>
+      </ul>
+    </div>
+
+    <div class="offer-card">
+      <span class="kurs-badge">🔧 In Vorbereitung</span>
+      <div class="offer-emoji">💼</div>
+      <h3>Büro- &amp; Job-Deutsch</h3>
+      <div class="offer-tier">Für den Beruf · B1–C1</div>
+      <ul class="offer-features">
+        <li>E-Mails, Meetings &amp; Telefonate meistern</li>
+        <li>Bewerbung &amp; Vorstellungsgespräch</li>
+        <li>Souverän im Arbeitsalltag kommunizieren</li>
+      </ul>
+    </div>
+
+    <div class="offer-card">
+      <span class="kurs-badge">🔧 In Vorbereitung</span>
+      <div class="offer-emoji">🏡</div>
+      <h3>Alltag &amp; Integration</h3>
+      <div class="offer-tier">Zum Ankommen · A2–B1</div>
+      <ul class="offer-features">
+        <li>Ämter, Arzt, Wohnen &amp; Einkaufen</li>
+        <li>Die wichtigsten Alltagssituationen</li>
+        <li>Selbstbewusst durch den deutschen Alltag</li>
+      </ul>
+    </div>
+
+    <div class="offer-card">
+      <span class="kurs-badge">🔧 In Vorbereitung</span>
+      <div class="offer-emoji">🎓</div>
+      <h3>Prüfungsvorbereitung</h3>
+      <div class="offer-tier">Goethe · telc · DTZ · A2–C1</div>
+      <ul class="offer-features">
+        <li>Gezielt auf deine Prüfung vorbereiten</li>
+        <li>Strategien für jeden Prüfungsteil</li>
+        <li>Realistische Simulationen &amp; Feedback</li>
+      </ul>
+    </div>
+
+  </div>
+  <p class="kurse-note">Die Kurse entstehen gerade mit Herzblut. <a href="#newsletter">Trag dich in den Newsletter ein →</a> und sei beim Start als Erste:r dabei.</p>
+</section>
 
 <!-- MINIKURS BANNER (100 Fehler der Deutschlerner — gratis) -->
 <section class="minikurs" id="minikurs">
@@ -602,81 +673,25 @@ footer a:hover{color:var(--accent)}
   </div>
 </section>
 
-<section class="amanda-band" id="amanda">
-  <div class="amanda-grid">
-    <div class="amanda-portrait">
-      <img src="amanda.png" alt="Amanda — deine KI-Deutschtutorin">
+<!-- AMANDA (kleiner Hinweis) -->
+<style>
+.amanda-hint{padding:26px 24px 46px;background:#fff}
+.amanda-hint-card{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,#FFF9F2,#FFF4D6);border:1px solid var(--border);border-radius:22px;padding:20px 26px;flex-wrap:wrap}
+.amanda-hint-card .ah-av{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 6px 16px rgba(0,0,0,.15);flex:0 0 auto}
+.amanda-hint-card .ah-text{flex:1;min-width:220px}
+.amanda-hint-card .ah-text b{display:block;font-size:17px;color:var(--secondary);margin-bottom:2px}
+.amanda-hint-card .ah-text span{font-size:14.5px;color:var(--text-soft);line-height:1.5}
+.amanda-hint-card .btn{flex:0 0 auto}
+@media(max-width:640px){.amanda-hint-card{text-align:center;justify-content:center}.amanda-hint-card .ah-text{min-width:0}.amanda-hint-card .btn{width:100%;justify-content:center}}
+</style>
+<section class="amanda-hint" id="amanda">
+  <div class="amanda-hint-card">
+    <img src="amanda.png" alt="Amanda — KI-Tutorin" class="ah-av">
+    <div class="ah-text">
+      <b>Übrigens: Amanda, deine KI-Tutorin 🤖</b>
+      <span>Rund um die Uhr Deutsch sprechen — Amanda korrigiert sanft und macht aus dem Üben ein echtes Gespräch.</span>
     </div>
-    <div>
-      <div class="section-tag">Neu: Deine KI-Tutorin</div>
-      <h2>Sprich mit <span class="highlight">Amanda</span></h2>
-      <p class="subtitle-en">Talk with Amanda — your AI German tutor, available 24/7.</p>
-      <p class="lead">Amanda ist meine KI-Deutschtutorin. Sie spricht mit meiner Stimme, korrigiert sanft und macht aus jedem Üben ein echtes Gespräch – geduldig, mit Humor und rund um die Uhr für dich da.</p>
-      <ul class="amanda-feats">
-        <li><span class="em">💬</span> Freie Konversation auf jedem Niveau</li>
-        <li><span class="em">✏️</span> Fehler sanft korrigieren</li>
-        <li><span class="em">📚</span> Grammatik einfach erklärt</li>
-        <li><span class="em">🎯</span> Prüfungs-Simulation (Goethe, B1)</li>
-      </ul>
-      <a href="amanda_landing.html" class="btn btn-primary" target="_blank" rel="noopener">🎤 Jetzt mit Amanda sprechen</a>
-    </div>
-  </div>
-
-  <!-- Amanda-Pläne (Preise gehören zu Amanda) -->
-  <div class="amanda-plans">
-    <div class="section-head" style="margin:64px auto 36px">
-      <span class="section-tag">Mit Amanda lernen · Pläne</span>
-      <h2 style="font-size:clamp(26px,3.6vw,40px)">Wähle deinen <span class="highlight">Amanda-Plan</span></h2>
-      <p>Starte kostenlos – und sprich so viel Deutsch, wie du willst. Monatlich, jederzeit kündbar.</p>
-    </div>
-    <div class="offer-grid">
-
-      <div class="offer-card">
-        <div class="offer-emoji">🆓</div>
-        <h3>Kostenlos</h3>
-        <div class="offer-tier">Zum Reinschnuppern</div>
-        <div class="offer-price">0 €<span>für immer</span></div>
-        <ul class="offer-features">
-          <li>1 Minute Amanda gratis testen</li>
-          <li>Hör ihre Stimme, sprich los</li>
-          <li>Kein Risiko, kein Abo</li>
-        </ul>
-        <a href="amanda_landing.html" class="btn btn-ghost" target="_blank" rel="noopener">Kostenlos testen</a>
-      </div>
-
-      <div class="offer-card">
-        <div class="offer-emoji">💬</div>
-        <h3>Sprechen</h3>
-        <div class="offer-tier">Unbegrenzt mit Amanda</div>
-        <div class="offer-price">9,99 €<span>/ Monat</span></div>
-        <ul class="offer-features">
-          <li>24/7 mit Amanda sprechen</li>
-          <li>Unbegrenzte Gespräche</li>
-          <li>Alle Niveaus A1–C2</li>
-          <li>Monatlich kündbar</li>
-        </ul>
-        <a href="https://stan.store/deutschoderwas/p/sprechclub-alltag-5yvunpk9?utm_source=deutschoderwas&utm_medium=index&utm_campaign=sprechen" class="btn btn-dark" target="_blank" rel="noopener">Jetzt buchen →</a>
-      </div>
-
-      <div class="offer-card featured">
-        <div class="offer-emoji">⭐</div>
-        <h3>Premium</h3>
-        <div class="offer-tier">Alles drin</div>
-        <div class="offer-price">19,99 €<span>/ Monat</span></div>
-        <ul class="offer-features">
-          <li>Alles aus „Sprechen" – 24/7 mit Amanda</li>
-          <li>Zugang zum kompletten Videomaterial zu Themen aus Julias LIVE-Klassen</li>
-          <li>Geschlossene Community mit täglichen Übungen</li>
-          <li>Audionachrichten & Videos von Julia persönlich</li>
-        </ul>
-        <div style="margin-top:auto">
-          <button class="btn" style="background:#F0E5D8;color:#6B7280;cursor:not-allowed;width:100%;justify-content:center" disabled>⏳ Bald verfügbar</button>
-          <a href="#newsletter" style="display:block;text-align:center;margin-top:10px;color:#DD0000;text-decoration:none;font-weight:700;font-size:14px">👉 Auf die Warteliste setzen</a>
-        </div>
-      </div>
-
-    </div>
-    <p style="text-align:center;margin-top:30px;color:var(--text-soft);font-size:14px">Monatlich kündbar · 7-Tage-Geld-zurück bei Unzufriedenheit · Sichere Zahlung über Stan.</p>
+    <a href="amanda_landing.html" class="btn btn-ghost" target="_blank" rel="noopener">Amanda kennenlernen →</a>
   </div>
 </section>
 
@@ -837,6 +852,44 @@ footer a:hover{color:var(--accent)}
 </section>
 
 <!-- FAQ -->
+
+<!-- LEHRER WERDEN -->
+<style>
+.lehrer{padding:100px 24px;background:linear-gradient(135deg,#FFF9F2 0%,#FFF4D6 70%,var(--turquoise-soft) 160%)}
+.lehrer-form{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:26px;padding:34px 32px;box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.lehrer-form .lf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.lehrer-form .lf-field{margin-bottom:16px}
+.lehrer-form label{display:block;font-weight:700;font-size:14px;color:var(--secondary);margin-bottom:6px}
+.lehrer-form input,.lehrer-form textarea{width:100%;box-sizing:border-box;padding:12px 14px;border:2px solid var(--border);border-radius:12px;font-family:inherit;font-size:15px;background:#fff}
+.lehrer-form input:focus,.lehrer-form textarea:focus{outline:none;border-color:var(--turquoise)}
+.lehrer-form textarea{min-height:88px;resize:vertical}
+.lehrer-form .btn{width:100%;justify-content:center;margin-top:6px}
+.lf-note{text-align:center;font-size:13px;color:var(--text-soft);margin-top:12px}
+.lf-success{max-width:640px;margin:0 auto;display:none;background:#fff;border:2px solid var(--turquoise);border-radius:26px;padding:40px 30px;text-align:center;font-size:19px;font-weight:700;color:var(--secondary);box-shadow:0 20px 50px rgba(0,0,0,.08)}
+.lf-success.show{display:block}
+@media(max-width:560px){.lehrer-form .lf-row{grid-template-columns:1fr}}
+</style>
+<section class="lehrer" id="lehrer">
+  <div class="section-head">
+    <span class="section-tag">Team · Mitmachen</span>
+    <h2>Werde <span class="highlight">Lehrer:in</span> bei deutschoderwas</h2>
+    <p>Du bist DaF-/DaZ-Lehrer:in und möchtest in kleinen Gruppen unterrichten, die richtig Freude machen? Bewirb dich – wir freuen uns auf dich!</p>
+  </div>
+  <form class="lehrer-form" id="lehrerForm" novalidate>
+    <div class="lf-row">
+      <div class="lf-field"><label>Name *</label><input name="name" required></div>
+      <div class="lf-field"><label>E-Mail *</label><input type="email" name="email" required></div>
+    </div>
+    <div class="lf-field"><label>Telefon (optional)</label><input name="phone"></div>
+    <div class="lf-field"><label>Erfahrung &amp; Qualifikation *</label><textarea name="experience" required placeholder="z. B. DaF-Zertifikat, X Jahre Unterrichtserfahrung, Niveaus A1–C1, Schwerpunkte …"></textarea></div>
+    <div class="lf-field"><label>Verfügbarkeit</label><textarea name="availability" placeholder="Welche Wochentage &amp; Uhrzeiten kannst du unterrichten? Wie viele Stunden pro Woche?"></textarea></div>
+    <div class="lf-field"><label>Nachricht (optional)</label><textarea name="message" placeholder="Was möchtest du uns noch sagen?"></textarea></div>
+    <button type="submit" class="btn btn-primary" id="lehrerSubmit">Bewerbung absenden →</button>
+    <p class="lf-note" id="lehrerNote">Deine Bewerbung geht direkt an Julia — wir melden uns per E-Mail.</p>
+  </form>
+  <div class="lf-success" id="lehrerSuccess">🎉 Danke für deine Bewerbung! Wir schauen sie uns an und melden uns bald per E-Mail bei dir.</div>
+</section>
+
 <section class="faq" id="faq">
   <div class="section-head">
     <div class="section-tag">Häufige Fragen</div>
@@ -906,18 +959,13 @@ footer a:hover{color:var(--accent)}
       <a href="#newsletter" class="btn btn-primary" style="margin-top:14px;padding:11px 20px;font-size:14px">Jetzt anmelden</a>
     </div>
   </div>
-  <div class="impressum" id="impressum">
+  <div class="impressum">
     <strong style="color:rgba(255,255,255,.7)">Impressum:</strong> deutschoderwas · Julia Karackov (Inhaberin) · Wiesenstraße 38, 58119 Hagen, Deutschland · E-Mail: deutschoderwas@gmail.com · Telefon: +49 17643425306 · Umsatzsteuer-ID: DE676677898 · Inhaltlich verantwortlich gemäß § 55 Abs. 2 RStV: Julia Karackov · EU-Streitbeilegung: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>
   </div>
   <div class="footer-bottom">
     © 2026 deutschoderwas · Julia Karackov · Mit ♥ für Deutschlernende erstellt
   </div>
 </footer>
-
-<!-- FLOATING AMANDA LINK -->
-<a class="amanda-fab" href="amanda_landing.html" target="_blank" rel="noopener" aria-label="Mit Amanda sprechen">
-  <span class="fab-av">A</span><span class="fab-lbl">Mit Amanda sprechen</span><span class="fab-pulse"></span>
-</a>
 
 <script>
 /* Mobile-Navigation */
@@ -944,6 +992,26 @@ if(nlForm){
     },250);
   });
 }
+</script>
+
+<script>
+(function(){
+  var lf=document.getElementById('lehrerForm'); if(!lf) return;
+  lf.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(!lf.checkValidity()){ lf.reportValidity(); return; }
+    var btn=document.getElementById('lehrerSubmit');
+    var note=document.getElementById('lehrerNote');
+    var data={}; new FormData(lf).forEach(function(v,k){ data[k]=v; });
+    btn.disabled=true; var old=btn.textContent; btn.textContent='Wird gesendet …';
+    try{
+      var r=await fetch('https://www.deutschoderwas-club.de/api/teacher-application',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+      var j={}; try{ j=await r.json(); }catch(_){}
+      if(j&&j.ok){ lf.style.display='none'; var ok=document.getElementById('lehrerSuccess'); ok.classList.add('show'); ok.scrollIntoView({behavior:'smooth',block:'center'}); }
+      else { btn.disabled=false; btn.textContent=old; note.textContent='Das hat leider nicht geklappt. Bitte später erneut versuchen oder direkt an info@deutschoderwas.de schreiben.'; }
+    }catch(err){ btn.disabled=false; btn.textContent=old; note.textContent='Netzwerkfehler – bitte später erneut versuchen.'; }
+  });
+})();
 </script>
 
 <!-- Teste dein Deutschniveau -->
