@@ -3,6 +3,7 @@
     { "source": "/amanda", "destination": "/amanda_landing.html" },
     { "source": "/mini-kurs", "destination": "/mini-kurs.html" },
     { "source": "/amanda-plus", "destination": "/amanda-plus.html" },
-    { "source": "/uebungsblatt", "destination": "/uebungsblatt-anmeldung.html" }
+    { "source": "/uebungsblatt", "destination": "/uebungsblatt-anmeldung.html" },
+    { "source": "/100-fehler", "destination": "/100-fehler-kurs.html" }
   ]
 }
