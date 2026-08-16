@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/mini-kurs",
+      "destination": "/mini-kurs.html",
+      "permanent": true
+    },
+    {
       "source": "/niveau-test",
       "destination": "https://www.deutschoderwas-club.de/niveau-test.html",
       "permanent": true
