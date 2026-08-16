@@ -1,17 +1,22 @@
 {
   "redirects": [
     {
-      "source": "/niveau-test.html",
-      "destination": "https://www.deutschoderwas-club.de/niveau-test.html",
-      "permanent": true
-    },
-    {
       "source": "/niveau-test",
       "destination": "https://www.deutschoderwas-club.de/niveau-test.html",
       "permanent": true
     },
     {
-      "source": "/:pfad*",
+      "source": "/niveau-test.html",
+      "destination": "https://www.deutschoderwas-club.de/niveau-test.html",
+      "permanent": true
+    },
+    {
+      "source": "/:pfad((?!mini-kurs|logo\\.PNG|100fehlerbild\\.png).*)",
+      "destination": "https://www.deutschoderwas-club.de/",
+      "permanent": true
+    },
+    {
+      "source": "/",
       "destination": "https://www.deutschoderwas-club.de/",
       "permanent": true
     }
